@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "storage": {
+      "cherryeStorage": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "bakeproducts": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "cartitems": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "api": {
+      "cherryeAPI": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "auth": {
+      "cherryea402d001": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

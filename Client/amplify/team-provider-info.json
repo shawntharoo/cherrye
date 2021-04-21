@@ -1,0 +1,46 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-cherrye-dev-194627-authRole",
+      "UnauthRoleArn": "arn:aws:iam::774012584662:role/amplify-cherrye-dev-194627-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::774012584662:role/amplify-cherrye-dev-194627-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-cherrye-dev-194627-deployment",
+      "UnauthRoleName": "amplify-cherrye-dev-194627-unauthRole",
+      "StackName": "amplify-cherrye-dev-194627",
+      "StackId": "arn:aws:cloudformation:us-west-2:774012584662:stack/amplify-cherrye-dev-194627/21a66870-856f-11eb-988d-02f40bde202f",
+      "AmplifyAppId": "dbwa0quzokdty"
+    },
+    "categories": {
+      "function": {
+        "cakeFunction": {
+          "deploymentBucketName": "amplify-cherrye-dev-194627-deployment",
+          "s3Key": "amplify-builds/cakeFunction-50467244464753714473-build.zip"
+        },
+        "cherryea402d001CustomMessage": {
+          "REDIRECTURL": "http://localhost:3000/cake",
+          "EMAILSUBJECT": "CHERRYE Account Verification",
+          "EMAILMESSAGE": "Please visit the following URL for account confirmation ",
+          "deploymentBucketName": "amplify-cherrye-dev-194627-deployment",
+          "s3Key": "amplify-builds/cherryea402d001CustomMessage-74564545504b52416f53-build.zip"
+        },
+        "cherryea402d001PostConfirmation": {
+          "GROUP": "client",
+          "deploymentBucketName": "amplify-cherrye-dev-194627-deployment",
+          "s3Key": "amplify-builds/cherryea402d001PostConfirmation-66664c6d63506f6d5150-build.zip"
+        },
+        "handlecartitemsFunction": {
+          "deploymentBucketName": "amplify-cherrye-dev-194627-deployment",
+          "s3Key": "amplify-builds/handlecartitemsFunction-4d442f6d51326866506d-build.zip"
+        },
+        "contactFunction": {
+          "deploymentBucketName": "amplify-cherrye-dev-194627-deployment",
+          "s3Key": "amplify-builds/contactFunction-37313933506362716a4b-build.zip"
+        }
+      },
+      "auth": {
+        "cherryea402d001": {}
+      }
+    }
+  }
+}

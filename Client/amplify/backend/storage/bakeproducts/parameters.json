@@ -1,0 +1,7 @@
+{
+    "tableName": "bakeproducts",
+    "partitionKeyName": "id",
+    "partitionKeyType": "S",
+    "sortKeyName": "type",
+    "sortKeyType": "S"
+}

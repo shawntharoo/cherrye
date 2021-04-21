@@ -1,0 +1,43 @@
+{
+  "permissions": {
+    "storage": {
+      "cherryeStorage": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "contact": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "function": {
+      "cherryea402d001CustomMessage": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ],
+      "cherryea402d001PostConfirmation": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "api": {
+      "cherryeAPI": [
+        "read"
+      ]
+    },
+    "auth": {
+      "cherryea402d001": [
+        "read"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

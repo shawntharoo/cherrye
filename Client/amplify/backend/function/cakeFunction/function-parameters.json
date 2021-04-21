@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "storage": {
+      "bakeproducts": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

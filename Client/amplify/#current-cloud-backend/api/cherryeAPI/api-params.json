@@ -1,0 +1,35 @@
+{
+    "paths": [
+        {
+            "name": "/cakes",
+            "lambdaFunction": "cakeFunction",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/cakes"
+        }
+    ],
+    "resourceName": "cherryeAPI",
+    "apiName": "cherryeAPI",
+    "functionArns": [
+        {
+            "lambdaFunction": "cakeFunction"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-cherrye-dev-194627-authRole",
+        "unAuthRoleName": "amplify-cherrye-dev-194627-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "cakeFunction",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}
