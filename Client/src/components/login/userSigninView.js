@@ -63,7 +63,7 @@ function SignIn(props) {
   const classes = useStyles();
    const { authentication } = props;
    if(authentication.username){
-     if(props.location.state.page === 'cart'){
+     if(props.location.state?.page === 'cart'){
        return <Redirect to="/cart" ></Redirect>
      }
     return <Redirect to="/" />

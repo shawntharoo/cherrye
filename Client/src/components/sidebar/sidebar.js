@@ -103,7 +103,6 @@ function PersistentDrawerLeft(props) {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
     const Link = props.Link;
-    console.log(props)
     const isAuthenticated = props.isAuthenticated;
     const handleDrawerOpen = () => {
         setOpen(true);

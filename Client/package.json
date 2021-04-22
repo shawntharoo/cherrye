@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^12.1.10",
     "aws-amplify": "^3.3.24",
     "bootstrap": "^4.6.0",
+    "dotenv": "^8.2.0",
     "final-form": "^4.20.2",
     "final-form-material-ui": "^0.3.0",
     "prop-types": "^15.7.2",

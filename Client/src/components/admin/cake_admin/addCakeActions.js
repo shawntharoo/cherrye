@@ -23,8 +23,8 @@ export function uploadItemImage(file){
     const config = {
       bucketName: "cherryebucket194627-dev",
       region: "us-west-2",
-      accessKeyId: "AKIA3INV6YLLN6BHWW7E",
-      secretAccessKey: "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"
+      accessKeyId: process.env.REACT_APP_KEY,
+      secretAccessKey: process.env.REACT_APP_SECRET,
   }
   const ReactS3Client = new S3(config);
   const upload_data = ReactS3Client.uploadFile(file, file.filename);
