@@ -16,25 +16,19 @@
     "cherryeStorage": {
       "service": "S3",
       "providerPlugin": "awscloudformation",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
-        "logicalId": "storagecherryeStorage"
-      },
-      "lastPushTimeStamp": "2021-04-23T04:30:47.615Z",
       "output": {
         "BucketName": "cherryebucket194627-dev",
         "Region": "us-west-2"
       },
-      "lastPushDirHash": "+UeBceFCgm+8+Htu1PiRmjuFmAI="
+      "lastPushTimeStamp": "2021-04-23T13:27:24.641Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+        "logicalId": "storagecherryeStorage"
+      }
     },
     "bakeproducts": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/storage/bakeproducts-cloudformation-template.json",
-        "logicalId": "storagebakeproducts"
-      },
-      "lastPushTimeStamp": "2021-04-23T04:30:47.625Z",
       "output": {
         "PartitionKeyName": "id",
         "SortKeyName": "type",
@@ -45,16 +39,15 @@
         "PartitionKeyType": "S",
         "Name": "bakeproducts-dev"
       },
-      "lastPushDirHash": "IVMqGGi9VRAJxaqKzv5nV65nkLQ="
+      "lastPushTimeStamp": "2021-04-23T13:27:24.648Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/storage/bakeproducts-cloudformation-template.json",
+        "logicalId": "storagebakeproducts"
+      }
     },
     "cartitems": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/storage/cartitems-cloudformation-template.json",
-        "logicalId": "storagecartitems"
-      },
-      "lastPushTimeStamp": "2021-04-23T04:30:47.638Z",
       "output": {
         "PartitionKeyName": "cartid",
         "SortKeyName": "username",
@@ -65,16 +58,15 @@
         "PartitionKeyType": "S",
         "Name": "cartitems-dev"
       },
-      "lastPushDirHash": "BlYrtjFQw8wyDgv4OxpJ3Oumaho="
+      "lastPushTimeStamp": "2021-04-23T13:27:24.655Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/storage/cartitems-cloudformation-template.json",
+        "logicalId": "storagecartitems"
+      }
     },
     "contact": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation",
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/storage/contact-cloudformation-template.json",
-        "logicalId": "storagecontact"
-      },
-      "lastPushTimeStamp": "2021-04-23T04:30:47.652Z",
       "output": {
         "PartitionKeyName": "contactid",
         "SortKeyName": "email",
@@ -85,7 +77,11 @@
         "PartitionKeyType": "S",
         "Name": "contact-dev"
       },
-      "lastPushDirHash": "3IFOZ+8qlUa17b6tQ7N0Ld+FGk0="
+      "lastPushTimeStamp": "2021-04-23T13:27:24.661Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/storage/contact-cloudformation-template.json",
+        "logicalId": "storagecontact"
+      }
     }
   },
   "function": {
@@ -103,73 +99,61 @@
           ]
         }
       ],
-      "lastBuildTimeStamp": "2021-04-16T01:31:30.827Z",
-      "lastPackageTimeStamp": "2021-04-16T01:31:34.771Z",
-      "distZipFilename": "cakeFunction-50467244464753714473-build.zip",
-      "s3Bucket": {
-        "deploymentBucketName": "amplify-cherrye-dev-194627-deployment",
-        "s3Key": "amplify-builds/cakeFunction-50467244464753714473-build.zip"
-      },
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/function/cakeFunction-cloudformation-template.json",
-        "logicalId": "functioncakeFunction"
-      },
-      "lastPushTimeStamp": "2021-04-23T04:30:47.669Z",
       "output": {
         "Region": "us-west-2",
         "Arn": "arn:aws:lambda:us-west-2:774012584662:function:cakeFunction-dev",
         "Name": "cakeFunction-dev",
         "LambdaExecutionRole": "cherryeLambdaRole190f183c-dev"
       },
-      "lastPushDirHash": "TU/uE9RGuYLz/TBUA3Fc1YMoX4I="
+      "lastPushTimeStamp": "2021-04-23T13:27:24.668Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/function/cakeFunction-cloudformation-template.json",
+        "logicalId": "functioncakeFunction"
+      },
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-cherrye-dev-194627-deployment",
+        "s3Key": "amplify-builds/cakeFunction-50467244464753714473-build.zip"
+      }
     },
     "cherryea402d001CustomMessage": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
-      "lastBuildTimeStamp": "2021-04-16T01:31:30.834Z",
-      "lastPackageTimeStamp": "2021-04-16T01:31:31.056Z",
-      "distZipFilename": "cherryea402d001CustomMessage-74564545504b52416f53-build.zip",
-      "s3Bucket": {
-        "deploymentBucketName": "amplify-cherrye-dev-194627-deployment",
-        "s3Key": "amplify-builds/cherryea402d001CustomMessage-74564545504b52416f53-build.zip"
-      },
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/function/cherryea402d001CustomMessage-cloudformation-template.json",
-        "logicalId": "functioncherryea402d001CustomMessage"
-      },
-      "lastPushTimeStamp": "2021-04-23T04:30:47.684Z",
       "output": {
         "Region": "us-west-2",
         "Arn": "arn:aws:lambda:us-west-2:774012584662:function:cherryea402d001CustomMessage-dev",
         "Name": "cherryea402d001CustomMessage-dev",
         "LambdaExecutionRole": "cherryea402d001CustomMessage-dev"
       },
-      "lastPushDirHash": "hY8dm72rqb6QmUq7r5wDd52DiaQ="
+      "lastPushTimeStamp": "2021-04-23T13:27:24.675Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/function/cherryea402d001CustomMessage-cloudformation-template.json",
+        "logicalId": "functioncherryea402d001CustomMessage"
+      },
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-cherrye-dev-194627-deployment",
+        "s3Key": "amplify-builds/cherryea402d001CustomMessage-74564545504b52416f53-build.zip"
+      }
     },
     "cherryea402d001PostConfirmation": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
-      "lastBuildTimeStamp": "2021-03-27T01:58:47.426Z",
-      "lastPackageTimeStamp": "2021-03-27T01:58:47.638Z",
-      "distZipFilename": "cherryea402d001PostConfirmation-66664c6d63506f6d5150-build.zip",
-      "s3Bucket": {
-        "deploymentBucketName": "amplify-cherrye-dev-194627-deployment",
-        "s3Key": "amplify-builds/cherryea402d001PostConfirmation-66664c6d63506f6d5150-build.zip"
-      },
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/function/cherryea402d001PostConfirmation-cloudformation-template.json",
-        "logicalId": "functioncherryea402d001PostConfirmation"
-      },
-      "lastPushTimeStamp": "2021-04-23T04:30:47.693Z",
       "output": {
         "Region": "us-west-2",
         "Arn": "arn:aws:lambda:us-west-2:774012584662:function:cherryea402d001PostConfirmation-dev",
         "Name": "cherryea402d001PostConfirmation-dev",
         "LambdaExecutionRole": "cherryea402d001PostConfirmation-dev"
       },
-      "lastPushDirHash": "xfOwGcWvQJuN5plSEu15WLS7y98="
+      "lastPushTimeStamp": "2021-04-23T13:27:24.682Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/function/cherryea402d001PostConfirmation-cloudformation-template.json",
+        "logicalId": "functioncherryea402d001PostConfirmation"
+      },
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-cherrye-dev-194627-deployment",
+        "s3Key": "amplify-builds/cherryea402d001PostConfirmation-66664c6d63506f6d5150-build.zip"
+      }
     },
     "handlecartitemsFunction": {
       "build": true,
@@ -215,18 +199,6 @@
           ]
         }
       ],
-      "lastBuildTimeStamp": "2021-04-16T01:31:30.815Z",
-      "lastPackageTimeStamp": "2021-04-16T01:31:32.098Z",
-      "distZipFilename": "handlecartitemsFunction-4d442f6d51326866506d-build.zip",
-      "s3Bucket": {
-        "deploymentBucketName": "amplify-cherrye-dev-194627-deployment",
-        "s3Key": "amplify-builds/handlecartitemsFunction-4d442f6d51326866506d-build.zip"
-      },
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/function/handlecartitemsFunction-cloudformation-template.json",
-        "logicalId": "functionhandlecartitemsFunction"
-      },
-      "lastPushTimeStamp": "2021-04-23T04:30:47.725Z",
       "output": {
         "Region": "us-west-2",
         "CloudWatchEventRule": "amplify-cherrye-dev-194627-functio-CloudWatchEvent-1IHYV5FCW4SHK",
@@ -234,7 +206,15 @@
         "Name": "handlecartitemsFunction-dev",
         "LambdaExecutionRole": "cherryeLambdaRole0651a217-dev"
       },
-      "lastPushDirHash": "qYsHSO31d7j+2NTp5yGpTxzQYnc="
+      "lastPushTimeStamp": "2021-04-23T13:27:24.689Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/function/handlecartitemsFunction-cloudformation-template.json",
+        "logicalId": "functionhandlecartitemsFunction"
+      },
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-cherrye-dev-194627-deployment",
+        "s3Key": "amplify-builds/handlecartitemsFunction-4d442f6d51326866506d-build.zip"
+      }
     },
     "contactFunction": {
       "build": true,
@@ -286,25 +266,21 @@
           ]
         }
       ],
-      "lastBuildTimeStamp": "2021-04-20T03:58:40.738Z",
-      "lastPackageTimeStamp": "2021-04-20T03:58:41.429Z",
-      "distZipFilename": "contactFunction-37313933506362716a4b-build.zip",
-      "s3Bucket": {
-        "deploymentBucketName": "amplify-cherrye-dev-194627-deployment",
-        "s3Key": "amplify-builds/contactFunction-37313933506362716a4b-build.zip"
-      },
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/function/contactFunction-cloudformation-template.json",
-        "logicalId": "functioncontactFunction"
-      },
-      "lastPushTimeStamp": "2021-04-23T04:30:47.740Z",
       "output": {
         "Region": "us-west-2",
         "Arn": "arn:aws:lambda:us-west-2:774012584662:function:contactFunction-dev",
         "Name": "contactFunction-dev",
         "LambdaExecutionRole": "cherryeLambdaRole8ae062bc-dev"
       },
-      "lastPushDirHash": "akAhu6088FH2hmemxGEacmP2fsE="
+      "lastPushTimeStamp": "2021-04-23T13:27:24.696Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/function/contactFunction-cloudformation-template.json",
+        "logicalId": "functioncontactFunction"
+      },
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-cherrye-dev-194627-deployment",
+        "s3Key": "amplify-builds/contactFunction-37313933506362716a4b-build.zip"
+      }
     }
   },
   "api": {
@@ -321,17 +297,16 @@
           ]
         }
       ],
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/api/cherryeAPI-cloudformation-template.json",
-        "logicalId": "apicherryeAPI"
-      },
-      "lastPushTimeStamp": "2021-04-23T04:30:47.756Z",
       "output": {
         "ApiName": "cherryeAPI",
         "RootUrl": "https://c9xuu36ii7.execute-api.us-west-2.amazonaws.com/dev",
         "ApiId": "c9xuu36ii7"
       },
-      "lastPushDirHash": "XDu/184bBAd+omxV7pSC6ONzYUM="
+      "lastPushTimeStamp": "2021-04-23T13:27:24.707Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/api/cherryeAPI-cloudformation-template.json",
+        "logicalId": "apicherryeAPI"
+      }
     },
     "cherryeAPICart": {
       "service": "API Gateway",
@@ -346,17 +321,16 @@
           ]
         }
       ],
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/api/cherryeAPICart-cloudformation-template.json",
-        "logicalId": "apicherryeAPICart"
-      },
-      "lastPushTimeStamp": "2021-04-23T04:30:47.775Z",
       "output": {
         "ApiName": "cherryeAPICart",
         "RootUrl": "https://fnqayac90c.execute-api.us-west-2.amazonaws.com/dev",
         "ApiId": "fnqayac90c"
       },
-      "lastPushDirHash": "dHZ8McpgJpEaKtaSDCprwpM9tP4="
+      "lastPushTimeStamp": "2021-04-23T13:27:24.719Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/api/cherryeAPICart-cloudformation-template.json",
+        "logicalId": "apicherryeAPICart"
+      }
     },
     "cherryeAPIContact": {
       "service": "API Gateway",
@@ -371,17 +345,16 @@
           ]
         }
       ],
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/api/cherryeAPIContact-cloudformation-template.json",
-        "logicalId": "apicherryeAPIContact"
-      },
-      "lastPushTimeStamp": "2021-04-23T04:30:47.792Z",
       "output": {
         "ApiName": "cherryeAPIContact",
         "RootUrl": "https://s0wbjw8bgl.execute-api.us-west-2.amazonaws.com/dev",
         "ApiId": "s0wbjw8bgl"
       },
-      "lastPushDirHash": "XKm6WeWpC2Fx6LIG32yf0uPR8wo="
+      "lastPushTimeStamp": "2021-04-23T13:27:24.731Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/api/cherryeAPIContact-cloudformation-template.json",
+        "logicalId": "apicherryeAPIContact"
+      }
     }
   },
   "auth": {
@@ -409,11 +382,6 @@
         }
       ],
       "customAuth": false,
-      "providerMetadata": {
-        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/auth/cherryea402d001-cloudformation-template.yml",
-        "logicalId": "authcherryea402d001"
-      },
-      "lastPushTimeStamp": "2021-04-23T04:30:47.810Z",
       "output": {
         "UserPoolId": "us-west-2_6Jopw0MYV",
         "AppClientIDWeb": "50rm1rgahmmba6mlppmrvogrl6",
@@ -422,7 +390,11 @@
         "IdentityPoolName": "cherryea402d001_identitypool_a402d001__dev",
         "UserPoolName": "cherryea402d001_userpool_a402d001"
       },
-      "lastPushDirHash": "B1rP26LoT3UniltSoKbuOb+t+0I="
+      "lastPushTimeStamp": "2021-04-23T13:27:24.743Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-194627-deployment/amplify-cfn-templates/auth/cherryea402d001-cloudformation-template.yml",
+        "logicalId": "authcherryea402d001"
+      }
     }
   }
 }
