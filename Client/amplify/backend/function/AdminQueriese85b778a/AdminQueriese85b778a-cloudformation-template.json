@@ -1,16 +1,15 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "Lambda Function resource stack creation using Amplify CLI",
+  "Description": "Lambda resource stack creation using Amplify CLI",
   "Parameters": {
-    "CloudWatchRule": {
-      "Type": "String",
-      "Default": "NONE",
-      "Description": " Schedule Expression"
-    },
-    "deploymentBucketName": {
+    "env": {
       "Type": "String"
     },
-    "env": {
+    "authcherryeAuthenticatioUserPoolId": {
+      "Type": "String",
+      "Default": "authcherryeAuthenticatioUserPoolId"
+    },
+    "deploymentBucketName": {
       "Type": "String"
     },
     "s3Key": {
@@ -35,24 +34,16 @@
         "aws:asset:property": "Code"
       },
       "Properties": {
-        "Code": {
-          "S3Bucket": {
-            "Ref": "deploymentBucketName"
-          },
-          "S3Key": {
-            "Ref": "s3Key"
-          }
-        },
         "Handler": "index.handler",
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "cakeFunction",
+            "AdminQueriese85b778a",
             {
               "Fn::Join": [
                 "",
                 [
-                  "cakeFunction",
+                  "AdminQueriese85b778a",
                   "-",
                   {
                     "Ref": "env"
@@ -67,8 +58,9 @@
             "ENV": {
               "Ref": "env"
             },
-            "REGION": {
-              "Ref": "AWS::Region"
+            "GROUP": "user",
+            "USERPOOL": {
+              "Ref": "authcherryeAuthenticatioUserPoolId"
             }
           }
         },
@@ -79,8 +71,15 @@
           ]
         },
         "Runtime": "nodejs14.x",
-        "Layers": [],
-        "Timeout": "25"
+        "Timeout": "25",
+        "Code": {
+          "S3Bucket": {
+            "Ref": "deploymentBucketName"
+          },
+          "S3Key": {
+            "Ref": "s3Key"
+          }
+        }
       }
     },
     "LambdaExecutionRole": {
@@ -89,12 +88,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "cherryeLambdaRole51080f65",
+            "AdminQueriese85b778aLambdaRole",
             {
               "Fn::Join": [
                 "",
                 [
-                  "cherryeLambdaRole51080f65",
+                  "AdminQueriese85b778aLambdaRole",
                   "-",
                   {
                     "Ref": "env"
@@ -158,6 +157,41 @@
                       "Ref": "LambdaFunction"
                     }
                   }
+                ]
+              }
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "cognito-idp:ListUsersInGroup",
+                "cognito-idp:AdminUserGlobalSignOut",
+                "cognito-idp:AdminEnableUser",
+                "cognito-idp:AdminDisableUser",
+                "cognito-idp:AdminRemoveUserFromGroup",
+                "cognito-idp:AdminAddUserToGroup",
+                "cognito-idp:AdminListGroupsForUser",
+                "cognito-idp:AdminGetUser",
+                "cognito-idp:AdminConfirmSignUp",
+                "cognito-idp:ListUsers",
+                "cognito-idp:ListGroups"
+              ],
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:aws:cognito-idp:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":userpool/",
+                    {
+                      "Ref": "authcherryeAuthenticatioUserPoolId"
+                    }
+                  ]
                 ]
               }
             }

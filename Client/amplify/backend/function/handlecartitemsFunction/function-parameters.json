@@ -1,39 +1,15 @@
 {
   "permissions": {
-    "storage": {
-      "cherryeStorage": [
-        "create",
+    "function": {
+      "cakeFunction": [
         "read",
-        "update",
-        "delete"
-      ],
-      "bakeproducts": [
-        "create",
-        "read",
-        "update",
-        "delete"
-      ],
-      "cartitems": [
-        "create",
-        "read",
-        "update",
-        "delete"
+        "update"
       ]
     },
     "api": {
       "cherryeAPI": [
-        "create",
         "read",
-        "update",
-        "delete"
-      ]
-    },
-    "auth": {
-      "cherryea402d001": [
-        "create",
-        "read",
-        "update",
-        "delete"
+        "update"
       ]
     }
   },

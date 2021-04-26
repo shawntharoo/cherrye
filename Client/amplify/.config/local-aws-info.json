@@ -3,10 +3,5 @@
     "configLevel": "project",
     "useProfile": true,
     "profileName": "default"
-  },
-  "prod": {
-    "configLevel": "project",
-    "useProfile": false,
-    "awsConfigFilePath": "C:\\Users\\User\\.amplify\\awscloudformation\\1LVGNVECu7"
   }
 }
