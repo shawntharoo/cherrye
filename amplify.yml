@@ -6,6 +6,7 @@ frontend:
       commands:
         - cd Client
         - npm install
+        - amplify push
     build:
       commands: 
         - yarn build
