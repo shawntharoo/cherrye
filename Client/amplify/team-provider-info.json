@@ -24,7 +24,22 @@
         "contactFunction": {
           "deploymentBucketName": "amplify-cherrye-dev-113949-deployment",
           "s3Key": "amplify-builds/contactFunction-7a49723063415757516e-build.zip"
+        },
+        "cherrye5eaae9eaCustomMessage": {
+          "REDIRECTURL": "https://main.d2kp37kexnw07w.amplifyapp.com/",
+          "EMAILSUBJECT": "cherrye account verification",
+          "EMAILMESSAGE": "please visit the following url to verify your email address with Cherrye account.",
+          "deploymentBucketName": "amplify-cherrye-dev-113949-deployment",
+          "s3Key": "amplify-builds/cherrye5eaae9eaCustomMessage-347651446d6f71634267-build.zip"
+        },
+        "cherrye5eaae9eaPostConfirmation": {
+          "GROUP": "customer",
+          "deploymentBucketName": "amplify-cherrye-dev-113949-deployment",
+          "s3Key": "amplify-builds/cherrye5eaae9eaPostConfirmation-6a485865305a30643936-build.zip"
         }
+      },
+      "auth": {
+        "cherrye5eaae9ea": {}
       }
     }
   }
