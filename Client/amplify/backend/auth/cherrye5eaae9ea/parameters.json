@@ -1,6 +1,6 @@
 {
     "identityPoolName": "cherrye5eaae9ea_identitypool_5eaae9ea",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "cherry5eaae9ea",
     "userPoolName": "cherrye5eaae9ea_userpool_5eaae9ea",
     "autoVerifiedAttributes": [

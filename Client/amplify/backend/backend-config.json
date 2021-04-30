@@ -130,5 +130,19 @@
       ],
       "customAuth": false
     }
+  },
+  "storage": {
+    "bakeproducts": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    },
+    "cartitems": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
+    },
+    "cherryebucket": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
+    }
   }
 }

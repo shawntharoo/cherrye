@@ -21,7 +21,7 @@ export function updateCake(cake) {
 export function uploadItemImage(file){
     /***** s3 bucket upload code */
     const config = {
-      bucketName: "cherryebucket194627-dev",
+      bucketName: "cherryebakehousebucket",
       region: "us-west-2",
       accessKeyId: process.env.REACT_APP_KEY,
       secretAccessKey: process.env.REACT_APP_SECRET,
