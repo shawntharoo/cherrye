@@ -11,6 +11,7 @@ frontend:
       commands:
         - cd Client
         - npm install
+        - amplifyPush --simple
     build:
       commands: 
         - yarn build
