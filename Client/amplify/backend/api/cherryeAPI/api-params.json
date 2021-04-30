@@ -19,8 +19,8 @@
     "privacy": {
         "auth": 0,
         "unauth": 0,
-        "authRoleName": "amplify-cherrye-dev-152450-authRole",
-        "unAuthRoleName": "amplify-cherrye-dev-152450-unauthRole"
+        "authRoleName": "amplify-cherrye-dev-113949-authRole",
+        "unAuthRoleName": "amplify-cherrye-dev-113949-unauthRole"
     },
     "dependsOn": [
         {

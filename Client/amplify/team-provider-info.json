@@ -1,50 +1,15 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-cherrye-dev-152450-authRole",
-      "UnauthRoleArn": "arn:aws:iam::774012584662:role/amplify-cherrye-dev-152450-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::774012584662:role/amplify-cherrye-dev-152450-authRole",
+      "AuthRoleName": "amplify-cherrye-dev-113949-authRole",
+      "UnauthRoleArn": "arn:aws:iam::431435831859:role/amplify-cherrye-dev-113949-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::431435831859:role/amplify-cherrye-dev-113949-authRole",
       "Region": "us-west-2",
-      "DeploymentBucketName": "amplify-cherrye-dev-152450-deployment",
-      "UnauthRoleName": "amplify-cherrye-dev-152450-unauthRole",
-      "StackName": "amplify-cherrye-dev-152450",
-      "StackId": "arn:aws:cloudformation:us-west-2:774012584662:stack/amplify-cherrye-dev-152450/c2b761c0-a58a-11eb-8b07-0ae4512ae27d",
-      "AmplifyAppId": "d1yxnbtqyq6vod"
-    },
-    "categories": {
-      "function": {
-        "cherryeAuthenticatioCustomMessage": {
-          "REDIRECTURL": "",
-          "EMAILSUBJECT": "verify your CHERRYE account",
-          "EMAILMESSAGE": "please click on the below url to verify your email address with cherrye bakehouse",
-          "deploymentBucketName": "amplify-cherrye-dev-152450-deployment",
-          "s3Key": "amplify-builds/cherryeAuthenticatioCustomMessage-6e446f34506b44385361-build.zip"
-        },
-        "cherryeAuthenticatioPostConfirmation": {
-          "GROUP": "user",
-          "deploymentBucketName": "amplify-cherrye-dev-152450-deployment",
-          "s3Key": "amplify-builds/cherryeAuthenticatioPostConfirmation-4d676e676e5a677a6e72-build.zip"
-        },
-        "handlecartitemsFunction": {
-          "deploymentBucketName": "amplify-cherrye-dev-152450-deployment",
-          "s3Key": "amplify-builds/handlecartitemsFunction-77726c686b774959674e-build.zip"
-        },
-        "contactFunction": {
-          "deploymentBucketName": "amplify-cherrye-dev-152450-deployment",
-          "s3Key": "amplify-builds/contactFunction-6c687237724b726a724a-build.zip"
-        },
-        "cakeFunction": {
-          "deploymentBucketName": "amplify-cherrye-dev-152450-deployment",
-          "s3Key": "amplify-builds/cakeFunction-6c50594f494734444945-build.zip"
-        },
-        "AdminQueriese85b778a": {
-          "deploymentBucketName": "amplify-cherrye-dev-152450-deployment",
-          "s3Key": "amplify-builds/AdminQueriese85b778a-483864346e334e5a4a44-build.zip"
-        }
-      },
-      "auth": {
-        "cherryeAuthenticatio": {}
-      }
+      "DeploymentBucketName": "amplify-cherrye-dev-113949-deployment",
+      "UnauthRoleName": "amplify-cherrye-dev-113949-unauthRole",
+      "StackName": "amplify-cherrye-dev-113949",
+      "StackId": "arn:aws:cloudformation:us-west-2:431435831859:stack/amplify-cherrye-dev-113949/26c1ca30-a959-11eb-ba18-0623b08d5ae3",
+      "AmplifyAppId": "d2kp37kexnw07w"
     }
   }
 }

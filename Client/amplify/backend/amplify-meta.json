@@ -1,15 +1,15 @@
 {
   "providers": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-cherrye-dev-152450-authRole",
-      "UnauthRoleArn": "arn:aws:iam::774012584662:role/amplify-cherrye-dev-152450-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::774012584662:role/amplify-cherrye-dev-152450-authRole",
+      "AuthRoleName": "amplify-cherrye-dev-113949-authRole",
+      "UnauthRoleArn": "arn:aws:iam::431435831859:role/amplify-cherrye-dev-113949-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::431435831859:role/amplify-cherrye-dev-113949-authRole",
       "Region": "us-west-2",
-      "DeploymentBucketName": "amplify-cherrye-dev-152450-deployment",
-      "UnauthRoleName": "amplify-cherrye-dev-152450-unauthRole",
-      "StackName": "amplify-cherrye-dev-152450",
-      "StackId": "arn:aws:cloudformation:us-west-2:774012584662:stack/amplify-cherrye-dev-152450/c2b761c0-a58a-11eb-8b07-0ae4512ae27d",
-      "AmplifyAppId": "d1yxnbtqyq6vod"
+      "DeploymentBucketName": "amplify-cherrye-dev-113949-deployment",
+      "UnauthRoleName": "amplify-cherrye-dev-113949-unauthRole",
+      "StackName": "amplify-cherrye-dev-113949",
+      "StackId": "arn:aws:cloudformation:us-west-2:431435831859:stack/amplify-cherrye-dev-113949/26c1ca30-a959-11eb-ba18-0623b08d5ae3",
+      "AmplifyAppId": "d2kp37kexnw07w"
     }
   },
   "function": {
@@ -17,74 +17,6 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
-    },
-    "contactFunction": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "cakeFunction",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "api",
-          "resourceName": "cherryeAPI",
-          "attributes": [
-            "ApiName",
-            "ApiId"
-          ]
-        }
-      ]
-    },
-    "handlecartitemsFunction": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "cakeFunction",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "api",
-          "resourceName": "cherryeAPI",
-          "attributes": [
-            "ApiName",
-            "ApiId"
-          ]
-        }
-      ]
-    },
-    "cherryeAuthenticatioCustomMessage": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "cherryeAuthenticatioPostConfirmation": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
-    "AdminQueriese85b778a": {
-      "service": "Lambda",
-      "providerPlugin": "awscloudformation",
-      "build": true,
-      "dependsOn": [
-        {
-          "category": "auth",
-          "resourceName": "cherryeAuthenticatio",
-          "attributes": [
-            "UserPoolId"
-          ]
-        }
-      ]
     }
   },
   "api": {
@@ -101,116 +33,6 @@
           ]
         }
       ]
-    },
-    "cherryeAPIContact": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "contactFunction",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ]
-    },
-    "cherryeAPICart": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "handlecartitemsFunction",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ]
-    },
-    "AdminQueries": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "auth",
-          "resourceName": "cherryeAuthenticatio",
-          "attributes": [
-            "UserPoolId"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "AdminQueriese85b778a",
-          "attributes": [
-            "Arn",
-            "Name"
-          ]
-        }
-      ]
-    }
-  },
-  "auth": {
-    "userPoolGroups": {
-      "service": "Cognito-UserPool-Groups",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "auth",
-          "resourceName": "cherryeAuthenticatio",
-          "attributes": [
-            "UserPoolId",
-            "AppClientIDWeb",
-            "AppClientID",
-            "IdentityPoolId"
-          ]
-        }
-      ]
-    },
-    "cherryeAuthenticatio": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "cherryeAuthenticatioCustomMessage",
-          "triggerProvider": "Cognito",
-          "attributes": [
-            "Arn",
-            "Name"
-          ]
-        },
-        {
-          "category": "function",
-          "resourceName": "cherryeAuthenticatioPostConfirmation",
-          "triggerProvider": "Cognito",
-          "attributes": [
-            "Arn",
-            "Name"
-          ]
-        }
-      ],
-      "customAuth": false
-    }
-  },
-  "storage": {
-    "cherryeStorage": {
-      "service": "S3",
-      "providerPlugin": "awscloudformation"
-    },
-    "bakeproducts": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
-    },
-    "cartitems": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
-    },
-    "contact": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
     }
   }
 }

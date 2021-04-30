@@ -1,7 +1,0 @@
-{
-    "tableName": "contact",
-    "partitionKeyName": "contactid",
-    "partitionKeyType": "S",
-    "sortKeyName": "email",
-    "sortKeyType": "S"
-}

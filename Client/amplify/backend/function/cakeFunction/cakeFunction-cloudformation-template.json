@@ -15,6 +15,14 @@
     },
     "s3Key": {
       "Type": "String"
+    },
+    "apicherryeAPIApiName": {
+      "Type": "String",
+      "Default": "apicherryeAPIApiName"
+    },
+    "apicherryeAPIApiId": {
+      "Type": "String",
+      "Default": "apicherryeAPIApiId"
     }
   },
   "Conditions": {
@@ -69,6 +77,12 @@
             },
             "REGION": {
               "Ref": "AWS::Region"
+            },
+            "API_CHERRYEAPI_APINAME": {
+              "Ref": "apicherryeAPIApiName"
+            },
+            "API_CHERRYEAPI_APIID": {
+              "Ref": "apicherryeAPIApiId"
             }
           }
         },
@@ -89,12 +103,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "cherryeLambdaRole51080f65",
+            "cherryeLambdaRole1333e991",
             {
               "Fn::Join": [
                 "",
                 [
-                  "cherryeLambdaRole51080f65",
+                  "cherryeLambdaRole1333e991",
                   "-",
                   {
                     "Ref": "env"
@@ -160,6 +174,55 @@
                   }
                 ]
               }
+            }
+          ]
+        }
+      }
+    },
+    "AmplifyResourcesPolicy": {
+      "DependsOn": [
+        "LambdaExecutionRole"
+      ],
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "amplify-lambda-execution-policy",
+        "Roles": [
+          {
+            "Ref": "LambdaExecutionRole"
+          }
+        ],
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "apigateway:POST",
+                "apigateway:PUT",
+                "apigateway:GET",
+                "apigateway:HEAD",
+                "apigateway:OPTIONS",
+                "apigateway:PATCH",
+                "apigateway:DELETE"
+              ],
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:apigateway:",
+                      {
+                        "Ref": "AWS::Region"
+                      },
+                      "::/restapis/",
+                      {
+                        "Ref": "apicherryeAPIApiName"
+                      },
+                      "/*"
+                    ]
+                  ]
+                }
+              ]
             }
           ]
         }
