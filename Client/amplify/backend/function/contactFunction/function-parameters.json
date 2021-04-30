@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "function": {
+      "cakeFunction": [
+        "read"
+      ]
+    },
+    "api": {
+      "cherryeAPI": [
+        "read"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

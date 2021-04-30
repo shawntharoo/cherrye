@@ -20,6 +20,10 @@
         "handlecartitemsFunction": {
           "deploymentBucketName": "amplify-cherrye-dev-113949-deployment",
           "s3Key": "amplify-builds/handlecartitemsFunction-504e5249566d67636857-build.zip"
+        },
+        "contactFunction": {
+          "deploymentBucketName": "amplify-cherrye-dev-113949-deployment",
+          "s3Key": "amplify-builds/contactFunction-7a49723063415757516e-build.zip"
         }
       }
     }

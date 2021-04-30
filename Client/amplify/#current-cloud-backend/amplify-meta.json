@@ -28,7 +28,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-113949-deployment/amplify-cfn-templates/function/cakeFunction-cloudformation-template.json",
         "logicalId": "functioncakeFunction"
       },
-      "lastPushTimeStamp": "2021-04-30T05:32:02.576Z",
+      "lastPushTimeStamp": "2021-04-30T05:43:58.369Z",
       "output": {
         "Region": "us-west-2",
         "Arn": "arn:aws:lambda:us-west-2:431435831859:function:cakeFunction-dev",
@@ -69,7 +69,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-113949-deployment/amplify-cfn-templates/function/handlecartitemsFunction-cloudformation-template.json",
         "logicalId": "functionhandlecartitemsFunction"
       },
-      "lastPushTimeStamp": "2021-04-30T05:32:02.626Z",
+      "lastPushTimeStamp": "2021-04-30T05:43:58.372Z",
       "output": {
         "Region": "us-west-2",
         "Arn": "arn:aws:lambda:us-west-2:431435831859:function:handlecartitemsFunction-dev",
@@ -77,6 +77,47 @@
         "LambdaExecutionRole": "cherryeLambdaRoled21a9f9f-dev"
       },
       "lastPushDirHash": "YPl45KIN6xVeJBKsC8SqOnVAXUQ="
+    },
+    "contactFunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "cakeFunction",
+          "attributes": [
+            "Name"
+          ]
+        },
+        {
+          "category": "api",
+          "resourceName": "cherryeAPI",
+          "attributes": [
+            "ApiName",
+            "ApiId"
+          ]
+        }
+      ],
+      "lastBuildTimeStamp": "2021-04-30T05:41:31.706Z",
+      "lastPackageTimeStamp": "2021-04-30T05:41:32.458Z",
+      "distZipFilename": "contactFunction-7a49723063415757516e-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-cherrye-dev-113949-deployment",
+        "s3Key": "amplify-builds/contactFunction-7a49723063415757516e-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-113949-deployment/amplify-cfn-templates/function/contactFunction-cloudformation-template.json",
+        "logicalId": "functioncontactFunction"
+      },
+      "lastPushTimeStamp": "2021-04-30T05:43:58.437Z",
+      "output": {
+        "Region": "us-west-2",
+        "Arn": "arn:aws:lambda:us-west-2:431435831859:function:contactFunction-dev",
+        "Name": "contactFunction-dev",
+        "LambdaExecutionRole": "cherryeLambdaRoleabc77d6f-dev"
+      },
+      "lastPushDirHash": "FTnp75QPgJnXbnqNjnbbbeQ6YTI="
     }
   },
   "api": {
@@ -97,7 +138,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-113949-deployment/amplify-cfn-templates/api/cherryeAPI-cloudformation-template.json",
         "logicalId": "apicherryeAPI"
       },
-      "lastPushTimeStamp": "2021-04-30T05:32:02.603Z",
+      "lastPushTimeStamp": "2021-04-30T05:43:58.402Z",
       "output": {
         "ApiName": "cherryeAPI",
         "RootUrl": "https://z7sczm14te.execute-api.us-west-2.amazonaws.com/dev",
@@ -122,13 +163,38 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-113949-deployment/amplify-cfn-templates/api/cherryeAPICart-cloudformation-template.json",
         "logicalId": "apicherryeAPICart"
       },
-      "lastPushTimeStamp": "2021-04-30T05:32:02.626Z",
+      "lastPushTimeStamp": "2021-04-30T05:43:58.413Z",
       "output": {
         "ApiName": "cherryeAPICart",
         "RootUrl": "https://teokhzk555.execute-api.us-west-2.amazonaws.com/dev",
         "ApiId": "teokhzk555"
       },
       "lastPushDirHash": "PsO5i4llsijHvSbwob20KSHPWuc="
+    },
+    "cherryeAPIContact": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "contactFunction",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-113949-deployment/amplify-cfn-templates/api/cherryeAPIContact-cloudformation-template.json",
+        "logicalId": "apicherryeAPIContact"
+      },
+      "lastPushTimeStamp": "2021-04-30T05:43:58.437Z",
+      "output": {
+        "ApiName": "cherryeAPIContact",
+        "RootUrl": "https://ijfj12av78.execute-api.us-west-2.amazonaws.com/dev",
+        "ApiId": "ijfj12av78"
+      },
+      "lastPushDirHash": "bhPA8vTvxrO5k+VYgrkA3RzRz8o="
     }
   }
 }

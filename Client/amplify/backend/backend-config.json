@@ -26,6 +26,28 @@
           ]
         }
       ]
+    },
+    "contactFunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "cakeFunction",
+          "attributes": [
+            "Name"
+          ]
+        },
+        {
+          "category": "api",
+          "resourceName": "cherryeAPI",
+          "attributes": [
+            "ApiName",
+            "ApiId"
+          ]
+        }
+      ]
     }
   },
   "api": {
@@ -50,6 +72,20 @@
         {
           "category": "function",
           "resourceName": "handlecartitemsFunction",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "cherryeAPIContact": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "contactFunction",
           "attributes": [
             "Name",
             "Arn"
