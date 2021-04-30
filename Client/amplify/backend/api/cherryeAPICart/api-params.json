@@ -1,0 +1,35 @@
+{
+  "paths": [
+    {
+      "name": "/item",
+      "lambdaFunction": "handlecartitemsFunction",
+      "privacy": {
+        "open": true
+      },
+      "policyResourceName": "/item"
+    }
+  ],
+  "resourceName": "cherryeAPICart",
+  "apiName": "cherryeAPICart",
+  "functionArns": [
+    {
+      "lambdaFunction": "handlecartitemsFunction"
+    }
+  ],
+  "privacy": {
+    "auth": 0,
+    "unauth": 0,
+    "authRoleName": "amplify-cherrye-dev-113949-authRole",
+    "unAuthRoleName": "amplify-cherrye-dev-113949-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "handlecartitemsFunction",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}

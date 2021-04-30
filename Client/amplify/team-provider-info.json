@@ -16,6 +16,10 @@
         "cakeFunction": {
           "deploymentBucketName": "amplify-cherrye-dev-113949-deployment",
           "s3Key": "amplify-builds/cakeFunction-47704f5851463741537a-build.zip"
+        },
+        "handlecartitemsFunction": {
+          "deploymentBucketName": "amplify-cherrye-dev-113949-deployment",
+          "s3Key": "amplify-builds/handlecartitemsFunction-504e5249566d67636857-build.zip"
         }
       }
     }
