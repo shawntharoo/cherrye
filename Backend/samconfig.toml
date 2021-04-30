@@ -1,0 +1,11 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "cherrye-app"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-19lf8wetqjy15"
+s3_prefix = "cherrye-app"
+region = "us-west-2"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "DynamoDBTableStreamARN=\"arn:aws:dynamodb:us-west-2:431435831859:table/contact-main/stream/2021-04-30T14:35:40.728\" FromMailIdentityName=\"gemificationtest@gmail.com\" ToMailIdentityName=\"cherryesalesteam@gmail.com\""
