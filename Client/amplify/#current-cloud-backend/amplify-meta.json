@@ -11,5 +11,58 @@
       "StackId": "arn:aws:cloudformation:us-west-2:431435831859:stack/amplify-cherrye-dev-113949/26c1ca30-a959-11eb-ba18-0623b08d5ae3",
       "AmplifyAppId": "d2kp37kexnw07w"
     }
+  },
+  "function": {
+    "cakeFunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "lastBuildTimeStamp": "2021-04-30T02:27:59.317Z",
+      "lastPackageTimeStamp": "2021-04-30T02:28:00.126Z",
+      "distZipFilename": "cakeFunction-47704f5851463741537a-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-cherrye-dev-113949-deployment",
+        "s3Key": "amplify-builds/cakeFunction-47704f5851463741537a-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-113949-deployment/amplify-cfn-templates/function/cakeFunction-cloudformation-template.json",
+        "logicalId": "functioncakeFunction"
+      },
+      "lastPushTimeStamp": "2021-04-30T02:30:18.232Z",
+      "output": {
+        "Region": "us-west-2",
+        "Arn": "arn:aws:lambda:us-west-2:431435831859:function:cakeFunction-dev",
+        "Name": "cakeFunction-dev",
+        "LambdaExecutionRole": "cherryeLambdaRole1333e991-dev"
+      },
+      "lastPushDirHash": "1jly6eP/emW29a9APPRxL34xt2c="
+    }
+  },
+  "api": {
+    "cherryeAPI": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "cakeFunction",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-cherrye-dev-113949-deployment/amplify-cfn-templates/api/cherryeAPI-cloudformation-template.json",
+        "logicalId": "apicherryeAPI"
+      },
+      "lastPushTimeStamp": "2021-04-30T02:30:18.232Z",
+      "output": {
+        "ApiName": "cherryeAPI",
+        "RootUrl": "https://z7sczm14te.execute-api.us-west-2.amazonaws.com/dev",
+        "ApiId": "z7sczm14te"
+      },
+      "lastPushDirHash": "yXsjF4+aWbHg3diGsEPYBbdW0ME="
+    }
   }
 }

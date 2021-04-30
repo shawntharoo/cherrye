@@ -10,6 +10,14 @@
       "StackName": "amplify-cherrye-dev-113949",
       "StackId": "arn:aws:cloudformation:us-west-2:431435831859:stack/amplify-cherrye-dev-113949/26c1ca30-a959-11eb-ba18-0623b08d5ae3",
       "AmplifyAppId": "d2kp37kexnw07w"
+    },
+    "categories": {
+      "function": {
+        "cakeFunction": {
+          "deploymentBucketName": "amplify-cherrye-dev-113949-deployment",
+          "s3Key": "amplify-builds/cakeFunction-47704f5851463741537a-build.zip"
+        }
+      }
     }
   }
 }
