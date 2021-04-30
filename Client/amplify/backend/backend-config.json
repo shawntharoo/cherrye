@@ -143,6 +143,10 @@
     "cherryebucket": {
       "service": "S3",
       "providerPlugin": "awscloudformation"
+    },
+    "contact": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
     }
   }
 }
