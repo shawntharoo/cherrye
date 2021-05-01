@@ -20,6 +20,7 @@ export function updateCake(cake) {
 export const fetchCake = () => (dispatch, getState) => {
     const apiData =  API.get('cherryeAPI', '/cakes');
     apiData.then(function(response){
+        console.log(response)
       dispatch({
         type: FETCH_CAKE,
         payload: response.body.Items

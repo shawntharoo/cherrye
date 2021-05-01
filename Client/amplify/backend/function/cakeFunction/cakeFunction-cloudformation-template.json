@@ -23,6 +23,18 @@
     "apicherryeAPIApiId": {
       "Type": "String",
       "Default": "apicherryeAPIApiId"
+    },
+    "storagebakeproductsName": {
+      "Type": "String",
+      "Default": "storagebakeproductsName"
+    },
+    "storagebakeproductsArn": {
+      "Type": "String",
+      "Default": "storagebakeproductsArn"
+    },
+    "storagecherryebucketBucketName": {
+      "Type": "String",
+      "Default": "storagecherryebucketBucketName"
     }
   },
   "Conditions": {
@@ -83,6 +95,15 @@
             },
             "API_CHERRYEAPI_APIID": {
               "Ref": "apicherryeAPIApiId"
+            },
+            "STORAGE_BAKEPRODUCTS_NAME": {
+              "Ref": "storagebakeproductsName"
+            },
+            "STORAGE_BAKEPRODUCTS_ARN": {
+              "Ref": "storagebakeproductsArn"
+            },
+            "STORAGE_CHERRYEBUCKET_BUCKETNAME": {
+              "Ref": "storagecherryebucketBucketName"
             }
           }
         },
@@ -197,26 +218,68 @@
             {
               "Effect": "Allow",
               "Action": [
-                "apigateway:POST",
-                "apigateway:PUT",
-                "apigateway:GET",
-                "apigateway:HEAD",
-                "apigateway:OPTIONS",
-                "apigateway:PATCH",
-                "apigateway:DELETE"
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:Delete*"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storagebakeproductsArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storagebakeproductsArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": "s3:ListBucket",
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:s3:::",
+                      {
+                        "Ref": "storagecherryebucketBucketName"
+                      }
+                    ]
+                  ]
+                }
+              ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:DeleteObject"
               ],
               "Resource": [
                 {
                   "Fn::Join": [
                     "",
                     [
-                      "arn:aws:apigateway:",
+                      "arn:aws:s3:::",
                       {
-                        "Ref": "AWS::Region"
-                      },
-                      "::/restapis/",
-                      {
-                        "Ref": "apicherryeAPIApiName"
+                        "Ref": "storagecherryebucketBucketName"
                       },
                       "/*"
                     ]

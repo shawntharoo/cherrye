@@ -3,7 +3,24 @@
     "cakeFunction": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "bakeproducts",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "cherryebucket",
+          "attributes": [
+            "BucketName"
+          ]
+        }
+      ]
     },
     "handlecartitemsFunction": {
       "build": true,
