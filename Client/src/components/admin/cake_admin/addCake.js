@@ -18,6 +18,7 @@ import {
   FormControl,
   FormControlLabel,
 } from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
 import { addCake, uploadItemImage } from './addCakeActions';
 import { connect, dispatch } from 'react-redux';
 import FileUploader from '../../common/uploadFileDirective';
@@ -40,22 +41,27 @@ const validate = values => {
 };
 
 function AddCake(props) {
-    const [selectedFile, setSelectedFile] = useState(null);
-    const [errors, setErrors] = useState({});
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [errors, setErrors] = useState({});
+  const [alert, setAlert] = useState();
 
-    const onSubmit = async values => {
-        const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
-        await sleep(300);
-        // window.alert(JSON.stringify(values, 0, 2));
-        const imgRespnse = await props.uploadCakeImage(selectedFile)
-        imgRespnse.payload.then(function(result) {
-            values.image = result.location;
-            props.addCakeItem(values);// "Stuff worked!"
-          }, function(err) {
-            console.log(err); // Error: "It broke"
-          });
+  const onSubmit = async values => {
+    setAlert(<div></div>);
+    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+    await sleep(300);
+    // window.alert(JSON.stringify(values, 0, 2));
+    const imgRespnse = await props.uploadCakeImage(selectedFile)
+    imgRespnse.payload.then(function (result) {
+      values.image = result.location;
+      props.addCakeItem(values);
+      setAlert(<Alert severity="success">This is a success alert — check it out!</Alert>)
 
-      };
+    }, function (err) {
+      setAlert(<Alert severity="error">This is an error alert — check it out!</Alert>)
+      console.log(err); // Error: "It broke"
+    });
+
+  };
 
   return (
     <div style={{ padding: 16, margin: 'auto', maxWidth: 600 }}>
@@ -113,11 +119,10 @@ function AddCake(props) {
                     label="Select a Type"
                     formControlProps={{ fullWidth: true }}
                   >
-                    <MenuItem value="London">London</MenuItem>
-                    <MenuItem value="Paris">Paris</MenuItem>
-                    <MenuItem value="Budapest">
-                      A city with a very long Name
-                    </MenuItem>
+                    <MenuItem value="Cake">Cake</MenuItem>
+                    <MenuItem value="Pastries">Pastries</MenuItem>
+                    <MenuItem value="Cupcake">Cupcake</MenuItem>
+                    <MenuItem value="Sandwitch">Sandwitch</MenuItem>
                   </Field>
                 </Grid>
                 <Grid item xs={12}>
@@ -141,7 +146,7 @@ function AddCake(props) {
                       />
                     }
                   />
-                  </Grid>
+                </Grid>
                 <Grid item xs={12}>
                   <Field
                     fullWidth
@@ -153,14 +158,14 @@ function AddCake(props) {
                   />
                 </Grid>
 
-                  <Grid item xs={12}>
-        
-                      <FileUploader
-          onFileSelectSuccess={(file) => setSelectedFile(file)}
-          onFileSelectError={({ error }) => alert(error)}
-        />
+                <Grid item xs={12}>
 
-               
+                  <FileUploader
+                    onFileSelectSuccess={(file) => setSelectedFile(file)}
+                    onFileSelectError={({ error }) => alert(error)}
+                  />
+
+
                 </Grid>
                 <Grid item style={{ marginTop: 16 }}>
                   <Button
@@ -187,19 +192,20 @@ function AddCake(props) {
           </form>
         )}
       />
+      {alert}
     </div>
   );
 }
 
 function mapStateToProps(state) {
-    return { propOne: state.propOne };
-  } 
+  return { propOne: state.propOne };
+}
 
- function mapDispatchToProps(dispatch) {
-    return {
-        addCakeItem: (cake) => dispatch(addCake(cake)),
-        uploadCakeImage: (file) => dispatch(uploadItemImage(file))
-    };
+function mapDispatchToProps(dispatch) {
+  return {
+    addCakeItem: (cake) => dispatch(addCake(cake)),
+    uploadCakeImage: (file) => dispatch(uploadItemImage(file))
+  };
 };
 
 

@@ -16,6 +16,7 @@ import { currentUserSession } from '../login/authActions';
 import logo from '../../static/images/logo.png';
 import { Redirect, Route } from "react-router";
 import { Link } from 'react-router-dom';
+import Loader from 'react-loader-spinner';
 
 const styles = () => ({
   root: {
@@ -46,8 +47,10 @@ class CakeView extends Component {
   render() {
     return (
       <main>
+      {
+            this.props.cakes ? 
         <Grid container spacing={1}>
-          <Grid container item xs={12} spacing={3}>
+              <Grid container item xs={12} spacing={3}>
             {this.props.cakes?.map((cake, index) => (
 
               <Grid item xs={4} key={cake.id}>
@@ -86,10 +89,11 @@ class CakeView extends Component {
                   </CardActions>
                 </Card>
               </Grid>
-
-            ))}
+              ))}
           </Grid>
-        </Grid>
+          </Grid>
+             : <Loader type="ThreeDots" color="#2BAD60" height="100" width="100" />
+          }
       </main>
     )
   }
