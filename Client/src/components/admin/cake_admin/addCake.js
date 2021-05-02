@@ -46,7 +46,7 @@ function AddCake(props) {
   const [alert, setAlert] = useState();
 
   const onSubmit = async values => {
-    setAlert(<div></div>);
+    setAlert(<Alert severity="info">please wait - the item is adding to the database</Alert>)
     const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     await sleep(300);
     // window.alert(JSON.stringify(values, 0, 2));
@@ -54,10 +54,10 @@ function AddCake(props) {
     imgRespnse.payload.then(function (result) {
       values.image = result.location;
       props.addCakeItem(values);
-      setAlert(<Alert severity="success">This is a success alert — check it out!</Alert>)
+      setAlert(<Alert severity="success">Your item is added successfully</Alert>)
 
     }, function (err) {
-      setAlert(<Alert severity="error">This is an error alert — check it out!</Alert>)
+      setAlert(<Alert severity="error">This is an error — please try again!</Alert>)
       console.log(err); // Error: "It broke"
     });
 

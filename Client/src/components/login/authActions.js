@@ -60,14 +60,18 @@ export function newPasswordSubmit(credentials) {
 }
 
 export const currentUserSession = () => (dispatch, getState) => {
-    Auth.currentAuthenticatedUser().then(user => {
+    Auth.currentUserInfo().then(user => {
         console.log(user)
-        user.authenticated = true;
+        //user.authenticated = true;
         dispatch({
             type: USER_SESSION,
             payload: user
         })
-    })
+    }, (error) => { 
+        console.log("lets see whats going to happen 1"+error)
+     }).catch((error) => {
+        console.log("lets see whats going to happen 2"+error)
+      })
 
 }
 

@@ -148,7 +148,7 @@ function PersistentDrawerLeft(props) {
                                             color="default"
                                             className={classes.button}
                                             endIcon={<LockOpenIcon />}
-                                            onClick={props.userSignOut()}
+                                            onClick={() => props.userSignOut()}
                                         >
                                             Logout
                                         </Button>)
@@ -197,7 +197,7 @@ function PersistentDrawerLeft(props) {
                         isAuthenticated.username ? (<Link to="/addCake">
                             <ListItem button>
                                 <ListItemIcon>{true ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                                <ListItemText primary="add fucking cake" />
+                                <ListItemText primary="Add New Item" />
                             </ListItem>
                         </Link>) : <div></div>
                     }
