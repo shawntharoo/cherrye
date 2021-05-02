@@ -60,7 +60,7 @@ export function newPasswordSubmit(credentials) {
 }
 
 export const currentUserSession = () => (dispatch, getState) => {
-    Auth.currentUserInfo().then(user => {
+    Auth.currentAuthenticatedUser().then(user => {
         console.log(user)
         //user.authenticated = true;
         dispatch({

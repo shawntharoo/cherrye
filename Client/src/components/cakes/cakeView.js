@@ -17,8 +17,11 @@ import logo from '../../static/images/logo.png';
 import { Redirect, Route } from "react-router";
 import { Link } from 'react-router-dom';
 import Loader from 'react-loader-spinner';
+import Skeleton from '@material-ui/lab/Skeleton';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
-const styles = () => ({
+const styles = (theme) => ({
   root: {
     maxWidth: 345,
     flexGrow: 1,
@@ -26,17 +29,28 @@ const styles = () => ({
   media: {
     height: 140,
   },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
 });
 
 class CakeView extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      open: true
+  };
   }
 
   componentDidMount() {
     this.props.loadSession();
     this.props.fetchData();
   }
+
+  handleClose = () => {
+    this.setState({open: false})
+  };
 
   viewDetails = () => {
     console.log("hello");
@@ -48,7 +62,7 @@ class CakeView extends Component {
     return (
       <main>
       {
-            this.props.cakes ? 
+            this.props.cakes.length != 0 ? 
         <Grid container spacing={1}>
               <Grid container item xs={12} spacing={3}>
             {this.props.cakes?.map((cake, index) => (
@@ -78,12 +92,9 @@ class CakeView extends Component {
                     </CardContent>
                   </CardActionArea>
                   <CardActions>
-                    <Button size="small" color="primary">
-                      Share
-          </Button>
                     <Button size="small" color="primary" >
                     <Link to={{ pathname: '/detailView',state: { cake }}}>
-                       Learn More
+                       Buy Now
                     </Link>
           </Button>
                   </CardActions>
@@ -92,7 +103,9 @@ class CakeView extends Component {
               ))}
           </Grid>
           </Grid>
-             : <Loader type="ThreeDots" color="#2BAD60" height="100" width="100" />
+             :    <Backdrop className={styles.backdrop} open={this.state.open} onClick={() => this.handleClose()}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
           }
       </main>
     )

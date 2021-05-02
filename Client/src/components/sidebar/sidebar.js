@@ -24,6 +24,10 @@ import LockOpenIcon from '@material-ui/icons/LockOpen';
 import logo from '../../static/images/logo.png';
 import { connect, dispatch } from 'react-redux';
 import { signOut } from '../login/authActions';
+import CakeIcon from '@material-ui/icons/Cake';
+import FastfoodIcon from '@material-ui/icons/Fastfood';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 
 const drawerWidth = 240;
 
@@ -104,6 +108,10 @@ function PersistentDrawerLeft(props) {
     const [open, setOpen] = React.useState(false);
     const Link = props.Link;
     const isAuthenticated = props.isAuthenticated;
+    let groups = [];
+    if(isAuthenticated.length != 0) {
+         groups = isAuthenticated.signInUserSession.accessToken.payload['cognito:groups']; 
+    }
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -183,34 +191,43 @@ function PersistentDrawerLeft(props) {
                 <List>
                     <Link to="/cake">
                         <ListItem button>
-                            <ListItemIcon>{true ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                            <ListItemIcon>{true ? <CakeIcon /> : <CakeIcon />}</ListItemIcon>
                             <ListItemText primary="Cakes" />
                         </ListItem>
                     </Link>
                     <Link to="/short_eat">
                         <ListItem button>
-                            <ListItemIcon>{true ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                            <ListItemIcon>{true ? <FastfoodIcon /> : <FastfoodIcon />}</ListItemIcon>
                             <ListItemText primary="Short Eats" />
                         </ListItem>
                     </Link>
-                    {
-                        isAuthenticated.username ? (<Link to="/addCake">
-                            <ListItem button>
-                                <ListItemIcon>{true ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                                <ListItemText primary="Add New Item" />
-                            </ListItem>
-                        </Link>) : <div></div>
-                    }
+
                 </List>
                 <Divider />
-                <List>
+                {/* <List>
                     {['All mail', 'Trash', 'Spam'].map((text, index) => (
                         <ListItem button key={text}>
                             <ListItemIcon> {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItem>
                     ))}
-                </List>
+                </List> */}
+                <List>
+                {
+                        isAuthenticated.username && groups.includes('admin') ? (<Link to="/addCake">
+                            <ListItem button>
+                                <ListItemIcon>{true ? <AddCircleIcon /> : <AddCircleIcon />}</ListItemIcon>
+                                <ListItemText primary="Add New Item" />
+                            </ListItem>
+                        </Link>) : <div></div>
+                    }
+                    <Link to="/contact">
+                            <ListItem button>
+                                <ListItemIcon>{true ? <ContactSupportIcon /> : <ContactSupportIcon />}</ListItemIcon>
+                                <ListItemText primary="Contact Us" />
+                            </ListItem>
+                        </Link>
+                    </List>
             </Drawer>
 
         </div>
