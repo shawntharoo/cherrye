@@ -16,17 +16,21 @@
     "s3Key": {
       "Type": "String"
     },
-    "functioncakeFunctionName": {
+    "apicherryeAPICartApiName": {
       "Type": "String",
-      "Default": "functioncakeFunctionName"
+      "Default": "apicherryeAPICartApiName"
     },
-    "apicherryeAPIApiName": {
+    "apicherryeAPICartApiId": {
       "Type": "String",
-      "Default": "apicherryeAPIApiName"
+      "Default": "apicherryeAPICartApiId"
     },
-    "apicherryeAPIApiId": {
+    "storagecontactName": {
       "Type": "String",
-      "Default": "apicherryeAPIApiId"
+      "Default": "storagecontactName"
+    },
+    "storagecontactArn": {
+      "Type": "String",
+      "Default": "storagecontactArn"
     }
   },
   "Conditions": {
@@ -59,12 +63,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "contactFunction",
+            "cherryeFunction",
             {
               "Fn::Join": [
                 "",
                 [
-                  "contactFunction",
+                  "cherryeFunction",
                   "-",
                   {
                     "Ref": "env"
@@ -82,14 +86,17 @@
             "REGION": {
               "Ref": "AWS::Region"
             },
-            "FUNCTION_CAKEFUNCTION_NAME": {
-              "Ref": "functioncakeFunctionName"
+            "API_CHERRYEAPICART_APINAME": {
+              "Ref": "apicherryeAPICartApiName"
             },
-            "API_CHERRYEAPI_APINAME": {
-              "Ref": "apicherryeAPIApiName"
+            "API_CHERRYEAPICART_APIID": {
+              "Ref": "apicherryeAPICartApiId"
             },
-            "API_CHERRYEAPI_APIID": {
-              "Ref": "apicherryeAPIApiId"
+            "STORAGE_CONTACT_NAME": {
+              "Ref": "storagecontactName"
+            },
+            "STORAGE_CONTACT_ARN": {
+              "Ref": "storagecontactArn"
             }
           }
         },
@@ -110,12 +117,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "cherryeLambdaRoleabc77d6f",
+            "cherryeLambdaRolefb0d405b",
             {
               "Fn::Join": [
                 "",
                 [
-                  "cherryeLambdaRoleabc77d6f",
+                  "cherryeLambdaRolefb0d405b",
                   "-",
                   {
                     "Ref": "env"
@@ -204,38 +211,13 @@
             {
               "Effect": "Allow",
               "Action": [
-                "lambda:Get*",
-                "lambda:List*",
-                "lambda:Invoke*"
-              ],
-              "Resource": [
-                {
-                  "Fn::Join": [
-                    "",
-                    [
-                      "arn:aws:lambda:",
-                      {
-                        "Ref": "AWS::Region"
-                      },
-                      ":",
-                      {
-                        "Ref": "AWS::AccountId"
-                      },
-                      ":function:",
-                      {
-                        "Ref": "functioncakeFunctionName"
-                      }
-                    ]
-                  ]
-                }
-              ]
-            },
-            {
-              "Effect": "Allow",
-              "Action": [
+                "apigateway:POST",
+                "apigateway:PUT",
                 "apigateway:GET",
                 "apigateway:HEAD",
-                "apigateway:OPTIONS"
+                "apigateway:OPTIONS",
+                "apigateway:PATCH",
+                "apigateway:DELETE"
               ],
               "Resource": [
                 {
@@ -248,14 +230,86 @@
                       },
                       "::/restapis/",
                       {
-                        "Ref": "apicherryeAPIApiName"
+                        "Ref": "apicherryeAPICartApiName"
                       },
                       "/*"
                     ]
                   ]
                 }
               ]
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "dynamodb:Put*",
+                "dynamodb:Create*",
+                "dynamodb:BatchWriteItem",
+                "dynamodb:Get*",
+                "dynamodb:BatchGetItem",
+                "dynamodb:List*",
+                "dynamodb:Describe*",
+                "dynamodb:Scan",
+                "dynamodb:Query",
+                "dynamodb:Update*",
+                "dynamodb:RestoreTable*",
+                "dynamodb:Delete*"
+              ],
+              "Resource": [
+                {
+                  "Ref": "storagecontactArn"
+                },
+                {
+                  "Fn::Join": [
+                    "/",
+                    [
+                      {
+                        "Ref": "storagecontactArn"
+                      },
+                      "index/*"
+                    ]
+                  ]
+                }
+              ]
             }
+          ]
+        }
+      }
+    },
+    "CloudWatchEvent": {
+      "Type": "AWS::Events::Rule",
+      "Properties": {
+        "Description": "Schedule rule for Lambda",
+        "ScheduleExpression": {
+          "Ref": "CloudWatchRule"
+        },
+        "State": "ENABLED",
+        "Targets": [
+          {
+            "Arn": {
+              "Fn::GetAtt": [
+                "LambdaFunction",
+                "Arn"
+              ]
+            },
+            "Id": {
+              "Ref": "LambdaFunction"
+            }
+          }
+        ]
+      }
+    },
+    "PermissionForEventsToInvokeLambda": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "LambdaFunction"
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "events.amazonaws.com",
+        "SourceArn": {
+          "Fn::GetAtt": [
+            "CloudWatchEvent",
+            "Arn"
           ]
         }
       }
@@ -283,6 +337,11 @@
     "LambdaExecutionRole": {
       "Value": {
         "Ref": "LambdaExecutionRole"
+      }
+    },
+    "CloudWatchEventRule": {
+      "Value": {
+        "Ref": "CloudWatchEvent"
       }
     }
   }

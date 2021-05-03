@@ -21,10 +21,6 @@
           "deploymentBucketName": "amplify-cherrye-dev-113949-deployment",
           "s3Key": "amplify-builds/handlecartitemsFunction-504e5249566d67636857-build.zip"
         },
-        "contactFunction": {
-          "deploymentBucketName": "amplify-cherrye-dev-113949-deployment",
-          "s3Key": "amplify-builds/contactFunction-7a49723063415757516e-build.zip"
-        },
         "cherrye5eaae9eaCustomMessage": {
           "REDIRECTURL": "https://main.d2kp37kexnw07w.amplifyapp.com/",
           "EMAILSUBJECT": "cherrye account verification",
@@ -36,10 +32,15 @@
           "GROUP": "customer",
           "deploymentBucketName": "amplify-cherrye-dev-113949-deployment",
           "s3Key": "amplify-builds/cherrye5eaae9eaPostConfirmation-6a485865305a30643936-build.zip"
+        },
+        "cherryeFunction": {
+          "deploymentBucketName": "amplify-cherrye-dev-113949-deployment",
+          "s3Key": "amplify-builds/cherryeFunction-315634324a4330547a33-build.zip"
         }
       },
       "auth": {
-        "cherrye5eaae9ea": {}
+        "cherrye5eaae9ea": {},
+        "userPoolGroups": {}
       }
     }
   }

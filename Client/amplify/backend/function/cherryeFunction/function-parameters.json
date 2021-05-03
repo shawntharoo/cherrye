@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "api": {
+      "cherryeAPICart": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    },
+    "storage": {
+      "contact": [
+        "create",
+        "read",
+        "update",
+        "delete"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

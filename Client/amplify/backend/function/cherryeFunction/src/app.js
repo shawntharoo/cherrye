@@ -8,11 +8,12 @@ See the License for the specific language governing permissions and limitations 
 
 
 /* Amplify Params - DO NOT EDIT
-	API_CHERRYEAPI_APIID
-	API_CHERRYEAPI_APINAME
+	API_CHERRYEAPICART_APIID
+	API_CHERRYEAPICART_APINAME
 	ENV
-	FUNCTION_CAKEFUNCTION_NAME
 	REGION
+	STORAGE_CONTACT_ARN
+	STORAGE_CONTACT_NAME
 Amplify Params - DO NOT EDIT */
 
 var express = require('express')
@@ -30,6 +31,7 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "*")
   next()
 });
+
 
 function id () {
   return Math.random().toString(36).substring(2) + Date.now().toString(36);
@@ -103,7 +105,6 @@ app.delete('/contact/*', function(req, res) {
   // Add your code here
   res.json({success: 'delete call succeed!', url: req.url});
 });
-
 
 app.listen(3000, function() {
     console.log("App started")

@@ -44,28 +44,6 @@
         }
       ]
     },
-    "contactFunction": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "cakeFunction",
-          "attributes": [
-            "Name"
-          ]
-        },
-        {
-          "category": "api",
-          "resourceName": "cherryeAPI",
-          "attributes": [
-            "ApiName",
-            "ApiId"
-          ]
-        }
-      ]
-    },
     "cherrye5eaae9eaCustomMessage": {
       "build": true,
       "providerPlugin": "awscloudformation",
@@ -75,6 +53,29 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "cherryeFunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "api",
+          "resourceName": "cherryeAPICart",
+          "attributes": [
+            "ApiName",
+            "ApiId"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "contact",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
     }
   },
   "api": {
@@ -112,7 +113,7 @@
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "contactFunction",
+          "resourceName": "cherryeFunction",
           "attributes": [
             "Name",
             "Arn"

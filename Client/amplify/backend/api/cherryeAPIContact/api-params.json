@@ -2,7 +2,7 @@
   "paths": [
     {
       "name": "/contact",
-      "lambdaFunction": "contactFunction",
+      "lambdaFunction": "cherryeFunction",
       "privacy": {
         "open": true
       },
@@ -13,7 +13,7 @@
   "apiName": "cherryeAPIContact",
   "functionArns": [
     {
-      "lambdaFunction": "contactFunction"
+      "lambdaFunction": "cherryeFunction"
     }
   ],
   "privacy": {
@@ -25,7 +25,7 @@
   "dependsOn": [
     {
       "category": "function",
-      "resourceName": "contactFunction",
+      "resourceName": "cherryeFunction",
       "attributes": [
         "Name",
         "Arn"

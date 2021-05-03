@@ -8,15 +8,15 @@
         },
     
     
-          "functioncontactFunctionName": {
+          "functioncherryeFunctionName": {
             "Type": "String",
-            "Default": "functioncontactFunctionName"
+            "Default": "functioncherryeFunctionName"
           },
 
           
-          "functioncontactFunctionArn": {
+          "functioncherryeFunctionArn": {
             "Type": "String",
-            "Default": "functioncontactFunctionArn"
+            "Default": "functioncherryeFunctionArn"
           }
 
           
@@ -168,7 +168,7 @@
                             
                             {
 
-                                "Ref": "functioncontactFunctionArn"
+                                "Ref": "functioncherryeFunctionArn"
                             },
                             
                             "/invocations"
@@ -267,7 +267,7 @@
                           
                           {
 
-                            "Ref": "functioncontactFunctionArn"
+                            "Ref": "functioncherryeFunctionArn"
                           },
                           
                           "/invocations"
@@ -324,12 +324,12 @@
       
         
 
-        "functioncontactFunctionPermissioncherryeAPIContact": {
+        "functioncherryeFunctionPermissioncherryeAPIContact": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
                 "FunctionName": 
                     {
-                        "Ref":  "functioncontactFunctionName"
+                        "Ref":  "functioncherryeFunctionName"
                     },
                     
                     "Action": "lambda:InvokeFunction",
