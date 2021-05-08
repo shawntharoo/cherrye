@@ -1,85 +1,32 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
-import { TextField } from 'final-form-material-ui';
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import { TextField } from 'final-form-material-ui';
+import ButtonBase from '@material-ui/core/ButtonBase';
 import { Form, Field } from 'react-final-form';
 import Button from '@material-ui/core/Button';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import { useHistory } from "react-router-dom";
-import { connect, dispatch } from 'react-redux';
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
-    app: {
-        width: '100%',
-        height: '100%',
-        margin: '50px auto',
-        boxShadow: '0 0 5px #ccc'
+    root: {
+        flexGrow: 1,
     },
-    details: {
-        display: 'flex',
-        justifyContent: 'space-around',
-        flexWrap: 'wrap',
-        padding: '30px 0'
+    paper: {
+        padding: theme.spacing(2),
+        margin: 'auto',
     },
-    detailsBigimg: {
-        maxWidth: '500px',
-        minWidth: '290px',
-        overflow: 'hidden',
-        margin: '25px'
+    image: {
+        width: 128,
+        height: 128,
     },
-    bigImg: {
-        width: '100%',
-        height: '100%',
-        maxHeight: '400px',
+    img: {
+        margin: 'auto',
         display: 'block',
-        objectFit: 'cover'
-    },
-
-    detailsbox: {
-        maxWidth: '500px',
-        minWidth: '290px',
-        margin: '25px'
-    },
-    boxrow: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        marginBottom: '15px'
-    },
-    boxrowh2: {
-        textTransform: 'uppercase',
-        letterSpacing: '2px'
-    },
-    boxrowspan: {
-        color: 'crimson',
-        fontSize: 20
-    },
-    boxp: {
-        lineHeight: '1.5',
-        margin: '15px 0'
-    },
-    boxCart: {
-        background: '#333',
-        color: 'white',
-        outline: 'none',
-        border: 'none',
-        cursor: 'pointer',
-        padding: '10px 25px',
-        marginTop: '15px'
-    },
-    quantityText: {
-        width: '50px',
-        margin: '12px',
-        margin: theme.spacing(1),
-        width: 200,
-    },
-    form: {
-        width: '100%', // Fix IE 11 issue.
-        marginTop: theme.spacing(1),
-    },
-    submit: {
-        margin: theme.spacing(10, 1, 1, 1),
+        maxWidth: '100%',
+        maxHeight: '100%',
     },
 }));
 
@@ -106,64 +53,69 @@ function CakeDetailView(props) {
     };
 
     return (
-        <div className={classes.app}>
+        <div className={classes.root}>
+            <Paper className={classes.paper}>
+                <Grid container spacing={2} lg={12}>
+                    <Grid item xs={12} lg={2}>
+                        <ButtonBase className={classes.image}>
+                            <img className={classes.img} alt="complex" src={cake.image} />
+                        </ButtonBase>
+                    </Grid>
+                    <Grid item xs={12}  lg={5} sm container>
+                        <Grid item xs container direction="column">
+                            <Grid item xs>
+                                <Typography gutterBottom variant="subtitle1">
+                                    {cake.name}
+                                </Typography>
+                                <Typography variant="body2" gutterBottom>
+                                    {cake.ingredients}
+                                </Typography>
+                                <Typography variant="body2" color="textSecondary">
+                                    {cake.notes}
+                                </Typography>
+                            </Grid>
+                        </Grid>
+                    </Grid>    
+                        <Grid item xs={12}  lg={3} container direction="column">
+                            <Typography variant="subtitle1">Cost per 1 unit - AU ${cake.price}</Typography>
+                        </Grid>
+                        <Grid item xs={12}  lg={2} container direction="raw">
+                            <Form
+                                onSubmit={onSubmit}
+                                initialValues={{ quantity: 1 }}
+                                render={({ handleSubmit, reset, submitting, pristine, values }) => (
+                                    <form className={classes.form} noValidate onSubmit={handleSubmit}>
 
-            <div className={classes.details} key={cake.id}>
-                <div className={classes.detailsBigimg}>
-                    <img className={classes.bigImg} src={cake.image} alt="" />
-                </div>
-
-                <div className={classes.detailsbox}>
-                    <div className={classes.boxrow}>
-                        <h2 className={classes.boxrowh2}>{cake.name}</h2>
-                        <span className={classes.boxrowspan}>${cake.price}</span>
-                    </div>
-
-                    <p className={classes.boxp}>{cake.ingredients}</p>
-                    <p className={classes.boxp}>{cake.notes}</p>
-
-
-                    <Form
-                        onSubmit={onSubmit}
-                        initialValues={{ quantity: 1 }}
-                        render={({ handleSubmit, reset, submitting, pristine, values }) => (
-                            <form className={classes.form} noValidate onSubmit={handleSubmit}>
-                                <Grid container spacing={2} alignItems="flex-start">
-                                    <Grid item xs={4}>
-                                        <Field
-                                            variant="outlined"
-                                            required
-                                            size="small"
-                                            label="Quantity"
-                                            name="quantity"
-                                            type="text"
-                                            autoComplete="quantity"
-                                            component={TextField}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={5}>
-                                        <Button
-                                            type="submit"
-                                            fullWidth
-                                            variant="contained"
-                                            color="primary"
-                                            className={classes.submit}
-                                            disabled={submitting}
-                                        >
-                                            Add to Cart
+                                                <Field
+                                                    variant="outlined"
+                                                    required
+                                                    size="small"
+                                                    label="Quantity"
+                                                    name="quantity"
+                                                    type="text"
+                                                    autoComplete="quantity"
+                                                    component={TextField}
+                                                />
+                                                <Button
+                                                    type="submit"
+                                                    fullWidth
+                                                    variant="contained"
+                                                    color="primary"
+                                                    className={classes.submit}
+                                                    disabled={submitting}
+                                                    size="small"
+                                                >
+                                                    Add to Cart
           </Button>
-                                    </Grid>
-                                </Grid>
-                            </form>
-                        )}
-                    />
-                </div>
-            </div>
-
+                                    </form>
+                                )}
+                            />
+                        </Grid>
+                </Grid>
+            </Paper>
         </div>
     );
 }
-
 const mapStateToProps = (state) => {
     return {
         authentication: state.authentication,

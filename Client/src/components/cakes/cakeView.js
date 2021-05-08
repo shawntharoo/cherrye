@@ -67,7 +67,7 @@ class CakeView extends Component {
               <Grid container item xs={12} spacing={3}>
             {this.props.cakes?.map((cake, index) => (
 
-              <Grid item xs={4} key={cake.id}>
+              <Grid item xs={12} sm={6} lg={4} key={cake.id}>
 
 
                 <Card className={styles.root}>

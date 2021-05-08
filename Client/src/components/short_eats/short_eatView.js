@@ -28,7 +28,7 @@ export default function ShortEatView() {
       <Grid container item xs={12} spacing={3}>
     {['All mail', 'Trash', 'Spam', 'fuck', 'this'].map((text, index) => (
 
-        <Grid item xs={4}>
+        <Grid item xs={12}>
 
 
         <Card className={classes.root}>
