@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { fetchCake } from './cakeActions';
-import { currentUserSession } from '../login/authActions';
+import { currentUserSession, signOut } from '../login/authActions';
 import logo from '../../static/images/logo.png';
 import { Redirect, Route } from "react-router";
 import { Link } from 'react-router-dom';
@@ -44,6 +44,7 @@ class CakeView extends Component {
   }
 
   componentDidMount() {
+    this.props.signOut();
     this.props.loadSession();
     this.props.fetchData();
   }
@@ -128,7 +129,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchData: () => dispatch(fetchCake()),
-    loadSession: () => dispatch(currentUserSession())
+    loadSession: () => dispatch(currentUserSession()),
+    signOut: () => dispatch(signOut())
   };
 };
 
