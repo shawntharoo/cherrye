@@ -32,6 +32,8 @@ app.use(function(req, res, next) {
   next()
 });
 
+const AWS = require('aws-sdk')
+const docClient = new AWS.DynamoDB.DocumentClient();
 
 function id () {
   return Math.random().toString(36).substring(2) + Date.now().toString(36);
@@ -69,7 +71,7 @@ app.post('/contact', function(req, res) {
   }
   docClient.put(params, function(err, data) {
     if (err) res.json({ err })
-    else res.json({success: 'post call succeed!', url: req.url, body: req.body})
+    else res.json({success: 'post call succeed!', url: req.url, body: data})
   })
 });
 

@@ -9,6 +9,7 @@ export const addContact = (contact) => (dispatch, getState) => {
         body : contact
       }
     const apiData =  API.post('cherryeAPIContact', '/contact', data);
+    console.log(data)
     apiData.then(function(response){
         console.log(response);
       dispatch({

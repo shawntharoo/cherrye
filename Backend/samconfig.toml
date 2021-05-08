@@ -8,4 +8,4 @@ s3_prefix = "cherrye-app"
 region = "us-west-2"
 confirm_changeset = true
 capabilities = "CAPABILITY_IAM"
-parameter_overrides = "DynamoDBTableStreamARN=\"arn:aws:dynamodb:us-west-2:431435831859:table/contact-main\" FromMailIdentityName=\"gemificationtest@gmail.com\" ToMailIdentityName=\"cherryesalesteam@gmail.com\""
+parameter_overrides = "DynamoDBTableStreamARN=\"arn:aws:dynamodb:us-west-2:431435831859:table/contact-main/stream/2021-04-30T14:35:40.728\" FromMailIdentityName=\"gemificationtest@gmail.com\" ToMailIdentityName=\"cherryesalesteam@gmail.com\""
