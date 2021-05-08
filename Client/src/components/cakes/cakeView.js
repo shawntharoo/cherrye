@@ -40,7 +40,7 @@ class CakeView extends Component {
     super(props);
     this.state = {
       open: true
-  };
+    };
   }
 
   componentDidMount() {
@@ -49,7 +49,7 @@ class CakeView extends Component {
   }
 
   handleClose = () => {
-    this.setState({open: false})
+    this.setState({ open: false })
   };
 
   viewDetails = () => {
@@ -59,54 +59,57 @@ class CakeView extends Component {
 
 
   render() {
+    var cakeArray = this.props.cakes.filter(function (el) {
+      return el.type == 'cakes';
+    });
     return (
       <main>
-      {
-            this.props.cakes.length != 0 ? 
-        <Grid container spacing={1}>
+        {
+          cakeArray.length != 0 ?
+            <Grid container spacing={1}>
               <Grid container item xs={12} spacing={3}>
-            {this.props.cakes?.map((cake, index) => (
+                {cakeArray?.map((cake, index) => (
 
-              <Grid item xs={12} sm={6} lg={4} key={cake.id}>
+                  <Grid item xs={12} sm={6} lg={4} key={cake.id}>
 
 
-                <Card className={styles.root}>
-                  <CardActionArea>
-                    <CardHeader
-                      title={cake.name}
-                      subheader={cake.type}
-                    />
-                    <CardMedia
-                      className={styles.media}
-                      component="img"
-                      src={cake.image}
-                      title="item image not available"
-                    />
-                    <CardContent>
-                      <Typography variant="body2" color="textSecondary" component="p">
-                        {cake.ingredients}
-                      </Typography>
-                      <Typography variant="body2" color="textSecondary" component="p">
-                        {cake.notes}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                  <CardActions>
-                    <Button size="small" color="primary" >
-                    <Link to={{ pathname: '/detailView',state: { cake }}}>
-                       Buy Now
+                    <Card className={styles.root}>
+                      <CardActionArea>
+                        <CardHeader
+                          title={cake.name}
+                          subheader={cake.type}
+                        />
+                        <CardMedia
+                          className={styles.media}
+                          component="img"
+                          src={cake.image}
+                          title="item image not available"
+                        />
+                        <CardContent>
+                          <Typography variant="body2" color="textSecondary" component="p">
+                            {cake.ingredients}
+                          </Typography>
+                          <Typography variant="body2" color="textSecondary" component="p">
+                            {cake.notes}
+                          </Typography>
+                        </CardContent>
+                      </CardActionArea>
+                      <CardActions>
+                        <Button size="small" color="primary" >
+                          <Link to={{ pathname: '/detailView', state: { cake } }}>
+                            Buy Now
                     </Link>
-          </Button>
-                  </CardActions>
-                </Card>
+                        </Button>
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                ))}
               </Grid>
-              ))}
-          </Grid>
-          </Grid>
-             :    <Backdrop className={styles.backdrop} open={this.state.open} onClick={() => this.handleClose()}>
-        <CircularProgress color="inherit" />
-      </Backdrop>
-          }
+            </Grid>
+            : <Backdrop className={styles.backdrop} open={this.state.open} onClick={() => this.handleClose()}>
+              <CircularProgress color="inherit" />
+            </Backdrop>
+        }
       </main>
     )
   }

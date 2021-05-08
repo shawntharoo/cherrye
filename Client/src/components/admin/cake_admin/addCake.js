@@ -119,10 +119,8 @@ function AddCake(props) {
                     label="Select a Type"
                     formControlProps={{ fullWidth: true }}
                   >
-                    <MenuItem value="Cake">Cake</MenuItem>
-                    <MenuItem value="Pastries">Pastries</MenuItem>
-                    <MenuItem value="Cupcake">Cupcake</MenuItem>
-                    <MenuItem value="Sandwitch">Sandwitch</MenuItem>
+                    <MenuItem value="cakes">Cakes</MenuItem>
+                    <MenuItem value="shorteats">Short Eats</MenuItem>
                   </Field>
                 </Grid>
                 <Grid item xs={12}>

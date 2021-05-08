@@ -131,7 +131,7 @@ function PersistentDrawerLeft(props) {
             >
                 <Toolbar>
                     <Grid container spacing={3}>
-                        <Grid item className={classes.menuIcon}>
+                        <Grid item className={classes.menuIcon} xs={1} sm={1}>
                             <IconButton
                                 color="inherit"
                                 aria-label="open drawer"
@@ -142,11 +142,10 @@ function PersistentDrawerLeft(props) {
                                 <MenuIcon />
                             </IconButton>
                         </Grid>
-                        <Grid item xs={10}>
+                        <Grid item xs={6} sm={9}>
                             <Avatar variant="square" alt="Remy Sharp" src={logo} className={classes.logo} />
-
                         </Grid>
-                        <Grid item xs={1}>
+                        <Grid item xs={5} sm={2} justifyContent="flex-end">
                             {
                                 isAuthenticated.username ?
                                     (
