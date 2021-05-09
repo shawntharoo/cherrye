@@ -32,6 +32,7 @@ export const signUp = (userData) => (dispatch, getState) =>  {
     })
     user.then(function(response){
         response.authenticated = true;
+        console.log(response)
         dispatch ({
             type: SIGN_UP,
             payload: response
