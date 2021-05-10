@@ -112,7 +112,6 @@ function PersistentDrawerLeft(props) {
     if(isAuthenticated.length != 0) {
         if(isAuthenticated.signInUserSession != null){
             groups = isAuthenticated.signInUserSession.accessToken.payload['cognito:groups']; 
-            groups.push('default');
         }
     }
     const handleDrawerOpen = () => {
@@ -215,14 +214,14 @@ function PersistentDrawerLeft(props) {
                     ))}
                 </List> */}
                 <List>
-                {
+                {/* {
                         isAuthenticated.username && groups.includes('admin') ? (<Link to="/addCake">
                             <ListItem button>
                                 <ListItemIcon>{true ? <AddCircleIcon /> : <AddCircleIcon />}</ListItemIcon>
                                 <ListItemText primary="Add New Item" />
                             </ListItem>
                         </Link>) : <div></div>
-                    }
+                    } */}
                     <Link to="/contact">
                             <ListItem button>
                                 <ListItemIcon>{true ? <ContactSupportIcon /> : <ContactSupportIcon />}</ListItemIcon>
