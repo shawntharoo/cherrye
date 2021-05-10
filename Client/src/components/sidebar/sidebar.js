@@ -112,6 +112,7 @@ function PersistentDrawerLeft(props) {
     if(isAuthenticated.length != 0) {
         if(isAuthenticated.signInUserSession != null){
             groups = isAuthenticated.signInUserSession.accessToken.payload['cognito:groups']; 
+            groups.push('default');
         }
     }
     const handleDrawerOpen = () => {
