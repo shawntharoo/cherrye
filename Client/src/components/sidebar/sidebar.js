@@ -214,14 +214,14 @@ function PersistentDrawerLeft(props) {
                     ))}
                 </List> */}
                 <List>
-                {/* {
+                {
                         isAuthenticated.username && groups.includes('admin') ? (<Link to="/addCake">
                             <ListItem button>
                                 <ListItemIcon>{true ? <AddCircleIcon /> : <AddCircleIcon />}</ListItemIcon>
                                 <ListItemText primary="Add New Item" />
                             </ListItem>
                         </Link>) : <div></div>
-                    } */}
+                    }
                     <Link to="/contact">
                             <ListItem button>
                                 <ListItemIcon>{true ? <ContactSupportIcon /> : <ContactSupportIcon />}</ListItemIcon>
