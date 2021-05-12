@@ -31,11 +31,11 @@
         "cherrye5eaae9eaPostConfirmation": {
           "GROUP": "customer",
           "deploymentBucketName": "amplify-cherrye-dev-113949-deployment",
-          "s3Key": "amplify-builds/cherrye5eaae9eaPostConfirmation-6a485865305a30643936-build.zip"
+          "s3Key": "amplify-builds/cherrye5eaae9eaPostConfirmation-55782f46494b5a4c7277-build.zip"
         },
         "cherryeFunction": {
           "deploymentBucketName": "amplify-cherrye-dev-113949-deployment",
-          "s3Key": "amplify-builds/cherryeFunction-666c6b5961524372374a-build.zip"
+          "s3Key": "amplify-builds/cherryeFunction-4d3872302b4d5a4f446d-build.zip"
         }
       },
       "auth": {

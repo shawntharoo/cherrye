@@ -1,35 +1,36 @@
 {
-  "paths": [
-    {
-      "name": "/contact",
-      "lambdaFunction": "cherryeFunction",
-      "privacy": {
-        "open": true
-      },
-      "policyResourceName": "/contact"
-    }
-  ],
-  "resourceName": "cherryeAPIContact",
-  "apiName": "cherryeAPIContact",
-  "functionArns": [
-    {
-      "lambdaFunction": "cherryeFunction"
-    }
-  ],
-  "privacy": {
-    "auth": 0,
-    "unauth": 0,
-    "authRoleName": "amplify-cherrye-dev-113949-authRole",
-    "unAuthRoleName": "amplify-cherrye-dev-113949-unauthRole"
-  },
-  "dependsOn": [
-    {
-      "category": "function",
-      "resourceName": "cherryeFunction",
-      "attributes": [
-        "Name",
-        "Arn"
-      ]
-    }
-  ]
+    "paths": [
+        {
+            "name": "/contact",
+            "lambdaFunction": "cherryeFunction",
+            "privacy": {
+                "open": true
+            },
+            "policyResourceName": "/contact"
+        }
+    ],
+    "resourceName": "cherryeAPIContact",
+    "apiName": "cherryeAPIContact",
+    "functionArns": [
+        {
+            "lambdaFunction": "cherryeFunction"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-cherrye-dev-113949-authRole",
+        "unAuthRoleName": "amplify-cherrye-dev-113949-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "cherryeFunction",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "8cffb144"
 }

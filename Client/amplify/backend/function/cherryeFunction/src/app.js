@@ -43,15 +43,15 @@ function id () {
  * Example get method *
  **********************/
 
-app.get('/contact', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
-});
+// app.get('/contact', function(req, res) {
+//   // Add your code here
+//   res.json({success: 'get call succeed!', url: req.url});
+// });
 
-app.get('/contact/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
-});
+// app.get('/contact/*', function(req, res) {
+//   // Add your code here
+//   res.json({success: 'get call succeed!', url: req.url});
+// });
 
 /****************************
 * Example post method *
@@ -75,38 +75,38 @@ app.post('/contact', function(req, res) {
   })
 });
 
-app.post('/contact/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
-});
+// app.post('/contact/*', function(req, res) {
+//   // Add your code here
+//   res.json({success: 'post call succeed!', url: req.url, body: req.body})
+// });
 
-/****************************
-* Example put method *
-****************************/
+// /****************************
+// * Example put method *
+// ****************************/
 
-app.put('/contact', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
-});
+// app.put('/contact', function(req, res) {
+//   // Add your code here
+//   res.json({success: 'put call succeed!', url: req.url, body: req.body})
+// });
 
-app.put('/contact/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
-});
+// app.put('/contact/*', function(req, res) {
+//   // Add your code here
+//   res.json({success: 'put call succeed!', url: req.url, body: req.body})
+// });
 
-/****************************
-* Example delete method *
-****************************/
+// /****************************
+// * Example delete method *
+// ****************************/
 
-app.delete('/contact', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
-});
+// app.delete('/contact', function(req, res) {
+//   // Add your code here
+//   res.json({success: 'delete call succeed!', url: req.url});
+// });
 
-app.delete('/contact/*', function(req, res) {
-  // Add your code here
-  res.json({success: 'delete call succeed!', url: req.url});
-});
+// app.delete('/contact/*', function(req, res) {
+//   // Add your code here
+//   res.json({success: 'delete call succeed!', url: req.url});
+// });
 
 app.listen(3000, function() {
     console.log("App started")
