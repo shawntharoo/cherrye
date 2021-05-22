@@ -8,13 +8,23 @@ export const signIn = (userData) => (dispatch, getState) =>  {
         username: userData.email,
         password: userData.password
     })
-    user.then(function(response){
+    user.then(response => {
         response.authenticated = true;
         dispatch ({
             type: SIGN_IN,
             payload: response
         })  // #1
-    })
+    }, (error) => { 
+        dispatch({
+            type: SIGN_IN,
+            payload: error
+        })
+     }).catch((error) => {
+        dispatch({
+            type: SIGN_IN,
+            payload: error
+        })
+      })
 }
 
 export const signUp = (userData) => (dispatch, getState) =>  {
@@ -30,14 +40,23 @@ export const signUp = (userData) => (dispatch, getState) =>  {
             // other custom attributes 
         }
     })
-    user.then(function(response){
+    user.then(response => {
         response.authenticated = true;
-        console.log(response)
         dispatch ({
             type: SIGN_UP,
             payload: response
         })  // #1
-    })
+    }, (error) => { 
+        dispatch({
+            type: SIGN_IN,
+            payload: error
+        })
+     }).catch((error) => {
+        dispatch({
+            type: SIGN_IN,
+            payload: error
+        })
+      })
 }
 
 export function forgotPasswordCode(credentials) {
@@ -69,9 +88,15 @@ export const currentUserSession = () => (dispatch, getState) => {
             payload: user
         })
     }, (error) => { 
-        console.log("lets see whats going to happen 1"+error)
+        dispatch({
+            type: USER_SESSION,
+            payload: error
+        })
      }).catch((error) => {
-        console.log("lets see whats going to happen 2"+error)
+        dispatch({
+            type: USER_SESSION,
+            payload: error
+        })
       })
 
 }
@@ -79,8 +104,16 @@ export const currentUserSession = () => (dispatch, getState) => {
 export const signOut = () => (dispatch, getState) => {
     try {
          Auth.signOut();
+         dispatch({
+            type: USER_SESSION,
+            payload: true
+        })
     } catch (error) {
         console.log('error signing out: ', error);
+        dispatch({
+            type: USER_SESSION,
+            payload: false
+        })
     }
 }
 

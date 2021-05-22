@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -11,9 +11,26 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Form, Field } from 'react-final-form';
+import Alert from '@material-ui/lab/Alert';
 import { signIn } from './authActions';
 import { connect, dispatch } from 'react-redux';
 import { Redirect, Route } from "react-router";
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+const styles = (theme) => ({
+  root: {
+    maxWidth: 345,
+    flexGrow: 1,
+  },
+  media: {
+    height: 140,
+  },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
+});
 
 const validate = values => {
   const errors = {};
@@ -60,7 +77,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SignIn(props) {
-  const classes = useStyles();
+  const classes = useStyles();  
+  const [loading, setLoading] = useState(true);
    const { authentication } = props;
    if(authentication.username){
      if(props.location.state?.page === 'cart'){
@@ -70,18 +88,26 @@ function SignIn(props) {
    }
 
   const onSubmit = async event => {
+    setLoading(false);
     const { email, password } = event;
     //add the registerUser method here and pass the parameters and get the parameters from actions
     const user = {
       email: email,
       password: password
     }
-    props.loginUser(user);
+    await props.loginUser(user);
+  };
+
+  const handleClose = () => {
+    setLoading(true)
   };
 
   return (
   <Container component="main" maxWidth="xs">
     <CssBaseline />
+    {authentication.code && <Alert severity="error">{authentication.message}</Alert>}
+    {
+        loading ? (
     <div className={classes.paper}>
       <Avatar className={classes.avatar}>
         <PersonIcon />
@@ -161,6 +187,10 @@ function SignIn(props) {
         )}
       />
     </div>
+    ) : (<Backdrop className={styles.backdrop} open={true} onClick={() => handleClose()}>
+              <CircularProgress color="inherit" />
+            </Backdrop>)
+      }
     <Box mt={5}>
       <Copyright />
     </Box>

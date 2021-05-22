@@ -16,6 +16,7 @@ import Checkout from './components/checkout/checkout';
 import CakeDetailView from './components/cakes/cakeDetailView';
 import Cart from './components/checkout/cart';
 import Contact from './components/contactUs/contactUs';
+import Profile from './components/profile/profile';
 
 const useStyles = makeStyles({
   container: {
@@ -40,6 +41,7 @@ function App(props) {
         <Route path="/cart" exact component={Cart} />
         <Route path="/" exact component={CakeView} />
         <Route path="/contact" exact component={Contact} />
+        <ProtectedRouteComponent path="/profile" component={Profile} isAuthenticated={props.authentication}/>
       <ProtectedRouteComponent path="/addCake" component={AddCake} isAuthenticated={props.authentication}/>
       </Router>
     </Container>

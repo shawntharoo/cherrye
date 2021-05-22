@@ -181,6 +181,10 @@
     "contact": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
+    },
+    "users": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
     }
   }
 }

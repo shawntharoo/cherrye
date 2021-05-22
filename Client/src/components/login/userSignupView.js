@@ -11,8 +11,25 @@ import PersonIcon from '@material-ui/icons/Person';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Alert from '@material-ui/lab/Alert';
 import { signUp } from './authActions';
 import { connect, dispatch } from 'react-redux';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+const styles = (theme) => ({
+  root: {
+    maxWidth: 345,
+    flexGrow: 1,
+  },
+  media: {
+    height: 140,
+  },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
+});
 
 const validate = values => {
   const errors = {};
@@ -75,9 +92,10 @@ const useStyles = makeStyles((theme) => ({
 
 function SignUp(props) {
   const classes = useStyles();
-  const [errors, setErrors] = useState({});
-
+  const [loading, setLoading] = useState(true);
+  const { authentication } = props;
   const onSubmit = async event => {
+    setLoading(false);
     const { firstName, lastName, email, tnumber, password, address } = event;
     //add the registerUser method here and pass the parameters and get the parameters from actions
     const user = {
@@ -88,13 +106,22 @@ function SignUp(props) {
       phoneNumber: tnumber,
       password: password
     }
-    props.registerUser(user);
+    await props.registerUser(user);
   };
+
+  const handleClose = () => {
+    setLoading(true)
+  };
+
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
+      {authentication?.user?.username && <Alert severity="success">User successfully created. Please check you E-Mail for verification link</Alert>}
+      {authentication.code && <Alert severity="error">{authentication.message}</Alert>}
+      {
+        loading ? (
+          <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <PersonIcon />
         </Avatar>
@@ -230,6 +257,11 @@ function SignUp(props) {
         )}
       />
       </div>
+        ) : (<Backdrop className={styles.backdrop} open={true} onClick={() => handleClose()}>
+              <CircularProgress color="inherit" />
+            </Backdrop>)
+      }
+
       <Box mt={5}>
         <Copyright />
       </Box>
@@ -238,7 +270,9 @@ function SignUp(props) {
 }
 
 function mapStateToProps(state) {
-  return { propOne: state.propOne };
+  return { 
+    propOne: state.propOne,
+    authentication: state.authentication };
 }
 
 function mapDispatchToProps(dispatch) {

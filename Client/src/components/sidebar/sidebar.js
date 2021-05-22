@@ -8,6 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -191,6 +192,17 @@ function PersistentDrawerLeft(props) {
                 </div>
                 <Divider />
                 <List>
+                {
+                        isAuthenticated.username ? (
+                <Link to="/profile">
+                            <ListItem button>
+                                <ListItemIcon>{true ? <AccountCircleIcon /> : <AccountCircleIcon />}</ListItemIcon>
+                                <ListItemText primary="Profile" />
+                            </ListItem>
+                        </Link>
+                        ) : <div></div>
+                }
+                <Divider />
                     <Link to="/cake">
                         <ListItem button>
                             <ListItemIcon>{true ? <CakeIcon /> : <CakeIcon />}</ListItemIcon>
@@ -215,14 +227,18 @@ function PersistentDrawerLeft(props) {
                     ))}
                 </List> */}
                 <List>
-                {/* {
-                        isAuthenticated.username && groups.includes('admin') ? (<Link to="/addCake">
+                {
+                        isAuthenticated.username && groups.includes('admin') ? (
+                            <div>
+                            <Link to="/addCake">
                             <ListItem button>
                                 <ListItemIcon>{true ? <AddCircleIcon /> : <AddCircleIcon />}</ListItemIcon>
                                 <ListItemText primary="Add New Item" />
                             </ListItem>
-                        </Link>) : <div></div>
-                    } */}
+                        </Link>
+                        </div>
+                        ) : <div></div>
+                    }
                     <Link to="/contact">
                             <ListItem button>
                                 <ListItemIcon>{true ? <ContactSupportIcon /> : <ContactSupportIcon />}</ListItemIcon>
