@@ -1,20 +1,29 @@
-import { LOAD_PROFILE } from './constants';
+import { LOAD_PROFILE, SET_PROFILE } from './constants';
 import Amplify, { API } from 'aws-amplify';
-import awsconfig from '../../aws-exports';
-Amplify.configure(awsconfig);
 
-
-export const profile = (profile) => (dispatch, getState) => {
+export const updateProfile = (profile) => (dispatch, getState) => {
     const data = {
         body : profile
       }
-    const apiData =  API.post('cherryeAPIContact', '/contact', data);
+    const apiData =  API.post('cherryeAPIUsers', '/users', data);
     apiData.then(function(response){
       dispatch({
-        type: LOAD_PROFILE,
+        type: SET_PROFILE,
         payload: response.body
     }) 
   })
+}
 
+export const loadProfile = (userId) => (dispatch, getState) => {
+  const data = {
+      body : userId
+    }
+  const apiData =  API.get('cherryeAPIUsers', '/users', data);
+  apiData.then(function(response){
+    dispatch({
+      type: LOAD_PROFILE,
+      payload: response.body
+  }) 
+})
 }
 

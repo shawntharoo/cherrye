@@ -1,0 +1,35 @@
+{
+  "paths": [
+    {
+      "name": "/users",
+      "lambdaFunction": "userFunction",
+      "privacy": {
+        "open": true
+      },
+      "policyResourceName": "/users"
+    }
+  ],
+  "resourceName": "cherryeAPIUsers",
+  "apiName": "cherryeAPIUsers",
+  "functionArns": [
+    {
+      "lambdaFunction": "userFunction"
+    }
+  ],
+  "privacy": {
+    "auth": 0,
+    "unauth": 0,
+    "authRoleName": "amplify-cherrye-dev-113949-authRole",
+    "unAuthRoleName": "amplify-cherrye-dev-113949-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "userFunction",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}
