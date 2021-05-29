@@ -1,4 +1,4 @@
-import { LOAD_PROFILE, SET_PROFILE } from './constants';
+import { LOAD_PROFILE, SET_PROFILE, UPDATE_PROFILE } from './constants';
 
 export function profileReducer(state = [], action) {
     switch (action.type) {
@@ -6,7 +6,7 @@ export function profileReducer(state = [], action) {
             return action.payload;
             case LOAD_PROFILE:
             return action.payload;
-            case SET_PROFILE:
+            case UPDATE_PROFILE:
             return action.payload;
         default:
             return state;

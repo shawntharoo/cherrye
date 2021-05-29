@@ -122,7 +122,7 @@ const ProfileDetailView = (props) => {
                   <Field
                     fullWidth
                     label="Phone Number"
-                    name="phone"
+                    name="phoneNumber"
                     type="number"
                     component={TextField}
                     variant="outlined"

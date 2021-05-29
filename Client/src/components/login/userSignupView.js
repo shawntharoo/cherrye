@@ -16,6 +16,7 @@ import { signUp } from './authActions';
 import { connect, dispatch } from 'react-redux';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { setProfile } from '../profile/profileActions';
 
 const styles = (theme) => ({
   root: {
@@ -107,6 +108,7 @@ function SignUp(props) {
       password: password
     }
     await props.registerUser(user);
+    await props.setUserDetails(user);
   };
 
   const handleClose = () => {
@@ -277,7 +279,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    registerUser: (user) => dispatch(signUp(user))
+    registerUser: (user) => dispatch(signUp(user)),
+    setUserDetails: (profile) => dispatch(setProfile(profile))
   };
 };
 

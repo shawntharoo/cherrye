@@ -39,7 +39,7 @@
         },
         "userFunction": {
           "deploymentBucketName": "amplify-cherrye-dev-113949-deployment",
-          "s3Key": "amplify-builds/userFunction-33696f38666a5a6c726e-build.zip"
+          "s3Key": "amplify-builds/userFunction-473363692f6858313851-build.zip"
         }
       },
       "auth": {

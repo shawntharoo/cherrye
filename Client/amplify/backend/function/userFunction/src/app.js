@@ -36,6 +36,12 @@ app.use(function(req, res, next) {
 });
 
 
+const AWS = require('aws-sdk')
+const docClient = new AWS.DynamoDB.DocumentClient();
+
+function id () {
+  return Math.random().toString(36).substring(2) + Date.now().toString(36);
+}
 /**********************
  * Example get method *
  **********************/
@@ -64,9 +70,9 @@ app.post('/users', function(req, res) {
     TableName: process.env.STORAGE_USERS_NAME,
     Item: {
       userId: id(),
-      givenName: req.body.given_name,
-      familyName: req.body.family_name,
-      phoneNumber: req.body.phone_number,
+      givenName: req.body.givenName,
+      familyName: req.body.familyName,
+      phoneNumber: req.body.phoneNumber,
       address: req.body.address,
       email: req.body.email
     }
@@ -91,9 +97,8 @@ app.put('/users', function(req, res) {
   var params = {
     TableName: process.env.STORAGE_USERS_NAME,
     Item: {
-      userId: req.body.username,
-      givenName: req.body.given_name,
-      familyName: req.body.family_name,
+      givenName: req.body.givenName,
+      familyName: req.body.familyName,
       address: req.body.address
     }
   }
