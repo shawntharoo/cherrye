@@ -6,7 +6,9 @@ export const setProfile = (profile) => (dispatch, getState) => {
         body : profile
       }
     const apiData =  API.post('cherryeAPIUsers', '/users', data);
+    console.log(data)
     apiData.then(function(response){
+      console.log(response)
       dispatch({
         type: UPDATE_PROFILE,
         payload: response.body
@@ -27,11 +29,13 @@ export const updateProfile = (profile) => (dispatch, getState) => {
 })
 }
 
-export const loadProfile = (userId) => (dispatch, getState) => {
-  const data = {
-      body : userId
-    }
-  const apiData =  API.get('cherryeAPIUsers', '/users', data);
+export const loadProfile = (userEmail) => (dispatch, getState) => {
+  const myInit = { 
+    queryStringParameters: { 
+        email: userEmail,
+    },
+};
+  const apiData =  API.get('cherryeAPIUsers', '/users', myInit);
   apiData.then(function(response){
     dispatch({
       type: LOAD_PROFILE,

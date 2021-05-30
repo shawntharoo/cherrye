@@ -47,9 +47,16 @@ function id () {
  **********************/
 
 app.get('/users', function(req, res) {
+  console.log(req.query)
   var params = {
-    TableName: process.env.STORAGE_USERS_NAME,
-  };
+    TableName: 'User',
+    FilterExpression: 'email = :value',
+    ExpressionAttributeValues: {
+        ':value': {
+            'S': 'tharooshawn@gmail.com'
+        }
+    }
+};
   docClient.scan(params, function(err, data) {
     if (err) res.json({ err })
     else res.json({success: 'get cakaes call succeed!', body: data})
@@ -81,7 +88,6 @@ app.post('/users', function(req, res) {
     if (err) res.json({ err })
     else res.json({success: 'post call succeed!', url: req.url, body: data})
   })
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
 
 // app.post('/users/*', function(req, res) {

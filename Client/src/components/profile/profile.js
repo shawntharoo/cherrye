@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import {
   Box,
@@ -7,11 +8,18 @@ import {
 import ProfileView from './profileView';
 import ProfileDetailView from './profileDetailView';
 import { currentUserSession } from '../login/authActions';
+import { loadProfile } from './profileActions';
 import { connect, dispatch } from 'react-redux';
 
 function Profile(props){
-  console.log(props.authentication)
+  
+  useEffect(() => {
+    props.fetchData()
+  });
+
   const { attributes } = props.authentication;
+  const { profile } = props.profile;
+  console.log(profile)
   return (
   <>
     <Helmet>
@@ -43,7 +51,7 @@ function Profile(props){
             md={6}
             xs={12}
           >
-            <ProfileDetailView user={attributes}/>
+            <ProfileDetailView user={attributes} profile={profile}/>
           </Grid>
         </Grid>
       </Container>
@@ -53,12 +61,15 @@ function Profile(props){
 };
 
 function mapStateToProps(state) {
-  return { authentication: state.authentication };
+  return { 
+    authentication: state.authentication,
+    profile: state.profile
+   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-       
+    fetchData: () => dispatch(loadProfile()),
   };
 };
 
