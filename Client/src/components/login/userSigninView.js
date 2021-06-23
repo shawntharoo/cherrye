@@ -83,6 +83,8 @@ function SignIn(props) {
    if(authentication.username){
      if(props.location.state?.page === 'cart'){
        return <Redirect to="/cart" ></Redirect>
+     }else if(props.location.state?.page === 'profile'){
+      return <Redirect to="/profile" ></Redirect>
      }
     return <Redirect to="/" />
    }

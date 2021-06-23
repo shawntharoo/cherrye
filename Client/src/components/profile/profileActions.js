@@ -6,9 +6,7 @@ export const setProfile = (profile) => (dispatch, getState) => {
         body : profile
       }
     const apiData =  API.post('cherryeAPIUsers', '/users', data);
-    console.log(data)
     apiData.then(function(response){
-      console.log(response)
       dispatch({
         type: UPDATE_PROFILE,
         payload: response.body
@@ -17,11 +15,12 @@ export const setProfile = (profile) => (dispatch, getState) => {
 }
 
 export const updateProfile = (profile) => (dispatch, getState) => {
-  const data = {
+  const init = {
       body : profile
     }
-  const apiData =  API.put('cherryeAPIUsers', '/users', data);
+  const apiData =  API.put('cherryeAPIUsers', '/users', init);
   apiData.then(function(response){
+    console.log(response)
     dispatch({
       type: SET_PROFILE,
       payload: response.body

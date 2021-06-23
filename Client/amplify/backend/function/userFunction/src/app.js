@@ -47,19 +47,19 @@ function id () {
  **********************/
 
 app.get('/users', function(req, res) {
-  console.log(req.query)
   var params = {
-    TableName: 'User',
-    FilterExpression: 'email = :value',
+    TableName: process.env.STORAGE_USERS_NAME,
+    FilterExpression: "#em = :value",
+    ExpressionAttributeNames: {
+      "#em": "email",
+  },
     ExpressionAttributeValues: {
-        ':value': {
-            'S': 'tharooshawn@gmail.com'
-        }
+        ":value" : "tharooshawn@gmail.com"
     }
 };
   docClient.scan(params, function(err, data) {
     if (err) res.json({ err })
-    else res.json({success: 'get cakaes call succeed!', body: data})
+    else res.json({success: 'get user call succeed!', body: data})
   })
 });
 
@@ -102,17 +102,27 @@ app.post('/users', function(req, res) {
 app.put('/users', function(req, res) {
   var params = {
     TableName: process.env.STORAGE_USERS_NAME,
-    Item: {
-      givenName: req.body.givenName,
-      familyName: req.body.familyName,
-      address: req.body.address
-    }
-  }
+    Key: {
+      "email": req.body.email,
+      "userId": req.body.userId
+    },
+    UpdateExpression: "set givenName = :gname, familyName = :fname, address = :address",
+    ExpressionAttributeValues: {
+        ":gname": req.body.firstName,
+        ":fname": req.body.lastName,
+        ":address": req.body.address
+    },
+    ReturnValues:"ALL_NEW"
+};
+
   docClient.update(params, function(err, data) {
-    if (err) res.json({ err })
-    else res.json({success: 'put call succeed!', url: req.url, body: data})
+    if (err){
+      res.json({ err })
+    }
+    else {
+      res.json({success: 'put call succeed!', url: req.url, body: data})
+    } 
   })
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
 });
 
 app.put('/users/*', function(req, res) {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import {
   Box,
@@ -11,15 +11,28 @@ import { currentUserSession } from '../login/authActions';
 import { loadProfile } from './profileActions';
 import { connect, dispatch } from 'react-redux';
 
-function Profile(props){
-  
-  useEffect(() => {
-    props.fetchData()
-  });
+class Profile extends Component {
+  constructor(props) {
+    super(props);
+    props.loadProfileDetails(props.authentication.attributes.email);
+    this.state = {
+      profile : {}
+    };
+  }
 
-  const { attributes } = props.authentication;
-  const { profile } = props.profile;
-  console.log(profile)
+ componentDidUpdate(prevProps,prevState) {
+    if(Object.entries(this.props.profile).length === 0){
+      console.log("no profile data recieved")
+    }else{
+      if(Object.entries(this.state.profile).length === 0){
+        this.setState({profile: this.props?.profile?.Items[0]})
+      }
+    }
+  }
+
+
+  render() {
+  const { attributes } = this.props.authentication;
   return (
   <>
     <Helmet>
@@ -43,7 +56,7 @@ function Profile(props){
             md={6}
             xs={12}
           >
-            <ProfileView user={attributes}/>
+            <ProfileView profile={this.state.profile}/>
           </Grid>
           <Grid
             item
@@ -51,25 +64,26 @@ function Profile(props){
             md={6}
             xs={12}
           >
-            <ProfileDetailView user={attributes} profile={profile}/>
+            <ProfileDetailView user={attributes} profile={this.state.profile}/>
           </Grid>
         </Grid>
       </Container>
     </Box>
   </>
   )
+    }
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return { 
     authentication: state.authentication,
     profile: state.profile
    };
 }
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
   return {
-    fetchData: () => dispatch(loadProfile()),
+    loadProfileDetails: (email) => dispatch(loadProfile(email)),
   };
 };
 

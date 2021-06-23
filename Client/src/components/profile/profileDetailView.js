@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Field } from 'react-final-form';
-import { TextField, Checkbox, Radio, Select } from 'final-form-material-ui';
+import { TextField } from 'final-form-material-ui';
 import {
   Box,
   Button,
@@ -31,17 +31,31 @@ const validate = values => {
 };
 
 const ProfileDetailView = (props) => {
+  console.log(props.profile)
   const [values, setValues] = useState({
-    firstName: 'Katarina',
-    lastName: 'Smith',
-    email: props.email,
-    phone: 'asdsda',
-    address: props.address,
-    userId: props.username
+    firstName: props.profile.givenName,
+    lastName: props.profile.familyName,
+    email: props.authentication.attributes.email,
+    phoneNumber: props.profile.phoneNumber,
+    address:props.profile.address,
+    userId: props.profile.userId
   });
+
+  if (values.userId == undefined && props.profile.userId != undefined) {
+    setValues({
+      firstName: props.profile.givenName,
+      lastName: props.profile.familyName,
+      email: props.authentication.attributes.email,
+      phoneNumber: props.profile.phoneNumber,
+      address:props.profile.address,
+      userId: props.profile.userId
+    });
+}
+
   const [alert, setAlert] = useState();
 
   const onSubmit = async values => {
+    console.log(values)
     setAlert(<Alert severity="info">please wait - the updates are saving</Alert>)
     props.updateUserDetails(values);
   };
@@ -50,6 +64,7 @@ const ProfileDetailView = (props) => {
     <Form
       onSubmit={onSubmit}
       validate={validate}
+      initialValues={values}
       render={({ handleSubmit, reset, submitting, pristine, values }) => (
         <form
           autoComplete="off"
@@ -74,7 +89,6 @@ const ProfileDetailView = (props) => {
                 >
                   <Field
                     fullWidth
-                    helperText="Please specify the first name"
                     label="First name"
                     name="firstName"
                     required
@@ -89,7 +103,7 @@ const ProfileDetailView = (props) => {
                   xs={12}
                 >
                   <Field
-                    fullWidth
+                  fullWidth
                     label="Last name"
                     name="lastName"
                     required
@@ -104,7 +118,7 @@ const ProfileDetailView = (props) => {
                   xs={12}
                 >
                   <Field
-                    fullWidth
+                  fullWidth
                     label="Email Address"
                     name="email"
                     required
@@ -120,7 +134,7 @@ const ProfileDetailView = (props) => {
                   xs={12}
                 >
                   <Field
-                    fullWidth
+                  fullWidth
                     label="Phone Number"
                     name="phoneNumber"
                     type="number"
@@ -132,11 +146,11 @@ const ProfileDetailView = (props) => {
                 </Grid>
                 <Grid
                   item
-                  md={12}
+                  md={6}
                   xs={12}
                 >
                   <Field
-                    fullWidth
+                  fullWidth
                     label="Address"
                     name="address"
                     required
@@ -177,7 +191,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    updateUserDetails: (profile) => dispatch(updateProfile(profile))
+    updateUserDetails: (profile) => dispatch(updateProfile(profile)),
   };
 };
 

@@ -41,19 +41,13 @@ const ProfileView = (props) => (
           gutterBottom
           variant="h3"
         >
-          {user.name}
+        {`${props.profile.givenName} ${props.profile.familyName}`}
         </Typography>
         <Typography
           color="textSecondary"
           variant="body1"
         >
-          {`${user.city} ${user.country}`}
-        </Typography>
-        <Typography
-          color="textSecondary"
-          variant="body1"
-        >
-          {`${moment().format('hh:mm A')} ${user.timezone}`}
+          {props.profile.address}
         </Typography>
       </Box>
     </CardContent>
