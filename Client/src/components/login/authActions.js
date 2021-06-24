@@ -81,7 +81,6 @@ export function newPasswordSubmit(credentials) {
 
 export const currentUserSession = () => (dispatch, getState) => {
     Auth.currentAuthenticatedUser().then(user => {
-        console.log(user)
         //user.authenticated = true;
         dispatch({
             type: USER_SESSION,

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -17,6 +17,7 @@ import { connect, dispatch } from 'react-redux';
 import { Redirect, Route } from "react-router";
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { currentUserSession } from '../login/authActions';
 
 const styles = (theme) => ({
   root: {
@@ -77,17 +78,37 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function SignIn(props) {
-  const classes = useStyles();  
+  const classes = useStyles();
   const [loading, setLoading] = useState(true);
-   const { authentication } = props;
-   if(authentication.username){
-     if(props.location.state?.page === 'cart'){
-       return <Redirect to="/cart" ></Redirect>
-     }else if(props.location.state?.page === 'profile'){
-      return <Redirect to="/profile" ></Redirect>
-     }
-    return <Redirect to="/" />
-   }
+  const [path, setPath] = useState(null);
+
+  useEffect(async () => {
+    if (props.authentication.length == 0) {
+      console.log("inside")
+      await props.loadSession();
+      //setAuthentication(props.authentication)
+    }
+    if (props.authentication.length != 0) {
+      console.log(props.location.state?.from.pathname)
+      if (props.location.state?.from.pathname === '/cart') {
+        setPath("cart")
+        
+      } else if (props.location.state?.from.pathname === '/profile') {
+        if(props.authentication.username == undefined){
+          setPath("login")
+        }else{
+          setPath("profile")
+        }
+      
+      } else {
+        if(props.authentication.username == undefined){
+          setPath("login")
+        }else{
+          setPath("home")
+        }
+      }
+    }
+  }, [props.authentication]);
 
   const onSubmit = async event => {
     setLoading(false);
@@ -104,100 +125,108 @@ function SignIn(props) {
     setLoading(true)
   };
 
-  return (
-  <Container component="main" maxWidth="xs">
-    <CssBaseline />
-    {authentication.code && <Alert severity="error">{authentication.message}</Alert>}
-    {
-        loading ? (
-    <div className={classes.paper}>
-      <Avatar className={classes.avatar}>
-        <PersonIcon />
-      </Avatar>
-      <Typography component="h1" variant="h5">
-        Sign In
-        </Typography>
-      <Form
-        onSubmit={onSubmit}
-        initialValues={{}}
-        validate={validate}
-        render={({ handleSubmit, reset, submitting, pristine, values }) => (
-          <form className={classes.form} noValidate onSubmit={handleSubmit}>
-            <Grid container spacing={2} alignItems="flex-start">
-              <Grid item xs={12}>
-                <Field
-                  variant="outlined"
-                  required
-                  fullWidth
-                  label="Email Address"
-                  name="email"
-                  type="text"
-                  autoComplete="email"
-                  component={TextField}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Field
-                  variant="outlined"
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  autoComplete="current-password"
-                  component={TextField}
-                />
-              </Grid>
-              <Grid item style={{ marginTop: 16 }} xs={6}>
-                <Button
-                  type="submit"
-                  fullWidth
-                  variant="contained"
-                  color="primary"
-                  className={classes.submit}
-                  disabled={submitting}
-                >
-                  Sign In
-          </Button>
-              </Grid>
-              <Grid item style={{ marginTop: 16 }} xs={6}>
-                <Button
-                  type="button"
-                  variant="contained"
-                  fullWidth
-                  onClick={reset}
-                  className={classes.submit}
-                  disabled={submitting || pristine}
-                >
-                  Reset
-                  </Button>
-              </Grid>
-            </Grid>
-            <Grid container justify="flex-start">
-              <Grid item xs>
-                <Link to="/reset_password">
-                  Forgot password?
-              </Link>
-              </Grid>
-              <Grid item>
-                <Link to="/register">
-                  {"Don't have an account? Sign Up"}
+  if(path == "cart"){
+    return <Redirect to="/cart" ></Redirect>
+  }else if(path == "profile"){
+    return <Redirect to="/profile" ></Redirect>
+  }else if(path == "home"){
+    return <Redirect to="/" ></Redirect>
+  }else{
+    return (
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        {props.authentication.code && <Alert severity="error">{props.authentication.message}</Alert>}
+        {
+          loading ? (
+            <div className={classes.paper}>
+              <Avatar className={classes.avatar}>
+                <PersonIcon />
+              </Avatar>
+              <Typography component="h1" variant="h5">
+                Sign In
+          </Typography>
+              <Form
+                onSubmit={onSubmit}
+                initialValues={{}}
+                validate={validate}
+                render={({ handleSubmit, reset, submitting, pristine, values }) => (
+                  <form className={classes.form} noValidate onSubmit={handleSubmit}>
+                    <Grid container spacing={2} alignItems="flex-start">
+                      <Grid item xs={12}>
+                        <Field
+                          variant="outlined"
+                          required
+                          fullWidth
+                          label="Email Address"
+                          name="email"
+                          type="text"
+                          autoComplete="email"
+                          component={TextField}
+                        />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Field
+                          variant="outlined"
+                          required
+                          fullWidth
+                          name="password"
+                          label="Password"
+                          type="password"
+                          autoComplete="current-password"
+                          component={TextField}
+                        />
+                      </Grid>
+                      <Grid item style={{ marginTop: 16 }} xs={6}>
+                        <Button
+                          type="submit"
+                          fullWidth
+                          variant="contained"
+                          color="primary"
+                          className={classes.submit}
+                          disabled={submitting}
+                        >
+                          Sign In
+            </Button>
+                      </Grid>
+                      <Grid item style={{ marginTop: 16 }} xs={6}>
+                        <Button
+                          type="button"
+                          variant="contained"
+                          fullWidth
+                          onClick={reset}
+                          className={classes.submit}
+                          disabled={submitting || pristine}
+                        >
+                          Reset
+                    </Button>
+                      </Grid>
+                    </Grid>
+                    <Grid container justify="flex-start">
+                      <Grid item xs>
+                        <Link to="/reset_password">
+                          Forgot password?
                 </Link>
-              </Grid>
-            </Grid>
-          </form>
-        )}
-      />
-    </div>
-    ) : (<Backdrop className={styles.backdrop} open={true} onClick={() => handleClose()}>
-              <CircularProgress color="inherit" />
-            </Backdrop>)
-      }
-    <Box mt={5}>
-      <Copyright />
-    </Box>
-  </Container>
+                      </Grid>
+                      <Grid item>
+                        <Link to="/register">
+                          {"Don't have an account? Sign Up"}
+                        </Link>
+                      </Grid>
+                    </Grid>
+                  </form>
+                )}
+              />
+            </div>
+          ) : (<Backdrop className={styles.backdrop} open={true} onClick={() => handleClose()}>
+            <CircularProgress color="inherit" />
+          </Backdrop>)
+        }
+        <Box mt={5}>
+          <Copyright />
+        </Box>
+      </Container>
     )
+  }
 }
 
 function mapStateToProps(state) {
@@ -206,7 +235,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    loginUser: (user) => dispatch(signIn(user))
+    loginUser: (user) => dispatch(signIn(user)),
+    loadSession: () => dispatch(currentUserSession())
   };
 };
 

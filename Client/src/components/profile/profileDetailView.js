@@ -31,7 +31,6 @@ const validate = values => {
 };
 
 const ProfileDetailView = (props) => {
-  console.log(props.profile)
   const [values, setValues] = useState({
     firstName: props.profile.givenName,
     lastName: props.profile.familyName,
